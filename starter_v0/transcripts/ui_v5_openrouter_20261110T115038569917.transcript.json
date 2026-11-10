@@ -1,0 +1,78 @@
+{
+  "transcript_id": "ui_v5_openrouter_20261110T115038569917",
+  "version": "v5",
+  "artifact_version": "v5+pac4559930cd5+t89aedeb37a5d",
+  "prompt_hash": "ac4559930cd568bb5c3abc4bb1af5d7107d74e2bb5e3fdd10a39058cc45b89c9",
+  "tools_hash": "89aedeb37a5d5c36249c1658e129cef9428df5dbddb1eeaa72b5ea10f9750790",
+  "provider": "openrouter",
+  "model": null,
+  "system_prompt": "artifacts\\system_prompt.md",
+  "tools": "artifacts\\tools.yaml",
+  "history_window": 10,
+  "max_tool_rounds": 4,
+  "source": "streamlit_ui",
+  "created_at": "2026-11-10T11:50:38",
+  "updated_at": "2026-11-10T11:53:12",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-11-10T11:53:06",
+      "user": "Mọi người đang bàn gì về GPT-5 trên Twitter? Lấy bài top.",
+      "status": "answered",
+      "assistant_text": "Hiện tại, tôi không thể truy cập thông tin về những gì mọi người đang bàn về GPT-5 trên Twitter. Có thể có vấn đề với API Twitter. Bạn có muốn tìm kiếm thông tin khác không?",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "social_search",
+              "args": {
+                "query": "GPT-5",
+                "search_type": "Top",
+                "limit": 1
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "social_search",
+              "args": {
+                "query": "GPT-5",
+                "search_type": "Top",
+                "limit": 1
+              },
+              "result": {
+                "tool": "search_tweets",
+                "error": "HTTPError",
+                "message": "403 Client Error: Forbidden for url: https://twitter-api45.p.rapidapi.com/search.php?query=GPT-5&search_type=Top"
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Hiện tại, tôi không thể truy cập thông tin về những gì mọi người đang bàn về GPT-5 trên Twitter. Có thể có vấn đề với API Twitter. Bạn có muốn tìm kiếm thông tin khác không?",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "social_search",
+          "args": {
+            "query": "GPT-5",
+            "search_type": "Top",
+            "limit": 1
+          },
+          "result": {
+            "tool": "search_tweets",
+            "error": "HTTPError",
+            "message": "403 Client Error: Forbidden for url: https://twitter-api45.p.rapidapi.com/search.php?query=GPT-5&search_type=Top"
+          }
+        }
+      ],
+      "ended_at": "2026-11-10T11:53:12"
+    }
+  ]
+}

@@ -2,7 +2,7 @@
 
 Use this guide before class. All keys go into `starter_v0/.env`. Never commit `.env`.
 
-Pricing and quotas can change. The classroom target below is current for this lab setup as of 2026-06-02; re-check the provider page before a new cohort.
+Pricing and quotas can change. The recommended plans below were checked on 2026-06-02; check the provider page if a quota looks different.
 
 Smoke tests below call tools through the registry (`TOOL_FUNCTIONS`) so they only
 verify that your API key works — they are not routing hints. Run them from `starter_v0/`.
@@ -12,15 +12,15 @@ verify that your API key works — they are not routing hints. Run them from `st
 Recommended provider:
 
 ```bash
-OPENROUTER_API_KEY=...
+OPENROUTER_API_KEY=<your-key>
 ```
 
 Alternatives:
 
 ```bash
-OPENAI_API_KEY=...
-ANTHROPIC_API_KEY=...
-GEMINI_API_KEY=...
+OPENAI_API_KEY=<your-key>
+ANTHROPIC_API_KEY=<your-key>
+GEMINI_API_KEY=<your-key>
 ```
 
 Preflight:
@@ -44,7 +44,7 @@ Tuỳ chọn trong `.env`: `OLLAMA_BASE_URL` (mặc định `http://localhost:11
 
 - Docs/credits: https://docs.tavily.com/documentation/api-credits
 - API key page: https://app.tavily.com
-- Classroom target: free plan with 1,000 API credits/month.
+- Recommended plan: free plan with 1,000 API credits/month.
 
 Setup:
 
@@ -53,7 +53,7 @@ Setup:
 3. Add to `starter_v0/.env`:
 
 ```bash
-TAVILY_API_KEY=tvly-...
+TAVILY_API_KEY=tvly-<your-key>
 ```
 
 Quick test:
@@ -66,7 +66,7 @@ python -c "from tools import TOOL_FUNCTIONS as T; print(T['lookup']('AI', max_re
 
 - Pricing: https://www.firecrawl.dev/pricing
 - Docs: https://docs.firecrawl.dev
-- Classroom target: free plan with 1,000 credits/month.
+- Recommended plan: free plan with 1,000 credits/month.
 
 Setup:
 
@@ -75,7 +75,7 @@ Setup:
 3. Add to `starter_v0/.env`:
 
 ```bash
-FIRECRAWL_API_KEY=fc-...
+FIRECRAWL_API_KEY=fc-<your-key>
 ```
 
 Quick test:
@@ -87,7 +87,7 @@ python -c "from tools import TOOL_FUNCTIONS as T; print(T['fetch']('https://open
 ## 4. RapidAPI Twitter API45 — `timeline`, `social_search`
 
 - API page: https://rapidapi.com/alexanderxbx/api/twitter-api45
-- Classroom target: free plan with 1,000 requests/month.
+- Recommended plan: free plan with 1,000 requests/month.
 
 Setup:
 
@@ -98,7 +98,7 @@ Setup:
 5. Add to `starter_v0/.env`:
 
 ```bash
-RAPIDAPI_KEY=...
+RAPIDAPI_KEY=<your-key>
 RAPIDAPI_TWITTER_HOST=twitter-api45.p.rapidapi.com
 ```
 
@@ -163,7 +163,7 @@ ai20k_research_demo_bot
 7. Add to `starter_v0/.env`:
 
 ```bash
-TELEGRAM_BOT_TOKEN=1234567890:AA....
+TELEGRAM_BOT_TOKEN=<your-bot-token>
 ```
 
 Never paste this token into reports, screenshots, chat logs, or GitHub.

@@ -9,6 +9,12 @@ from tools._shared import TIMEOUT, domain, err
 
 
 def read_url(url: str = "") -> dict[str, Any]:
+    url = (url or "").strip()
+    if not url:
+        # Fix for BUG-8: do not spend a Firecrawl credit on an empty URL.
+        return {"tool": "read_url", "error": "ValueError", "message": "url must not be empty"}
+    if not url.lower().startswith(("http://", "https://")):
+        url = f"https://{url}"  # Fix for BUG-9: bare domains are rejected by Firecrawl.
     try:
         key = os.getenv("FIRECRAWL_API_KEY")
         if not key:

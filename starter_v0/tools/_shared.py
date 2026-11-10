@@ -15,6 +15,18 @@ def err(tool: str, exc: Exception) -> dict[str, Any]:
     return {"tool": tool, "error": type(exc).__name__, "message": str(exc)}
 
 
+def clamp_int(value: Any, default: int, low: int, high: int) -> int:
+    """Coerce a model-supplied number ("5", 5.0, None, 0, -3, 999) into [low, high].
+
+    Models often send numbers as strings or out-of-range values. None / "" / garbage → default.
+    """
+    try:
+        number = int(float(value))
+    except (TypeError, ValueError):
+        return default
+    return max(low, min(number, high))
+
+
 def domain(url: str) -> str:
     try:
         return urlparse(url).netloc.replace("www.", "")

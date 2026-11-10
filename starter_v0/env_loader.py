@@ -19,7 +19,7 @@ def load_dotenv(path: Path, *, override: bool = True) -> None:
 
 
 def load_lab_env(root: Path) -> None:
-    external_path = os.getenv("DAY04_ENV_FILE")
+    external_path = os.getenv("DAY03_ENV_FILE")
     if external_path:
         load_dotenv(Path(external_path).expanduser())
         return

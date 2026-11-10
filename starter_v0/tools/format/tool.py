@@ -15,11 +15,18 @@ def _bullet(item: dict[str, Any]) -> str:
     text = (item.get("summary") or item.get("title") or "").strip().replace("\n", " ")
     if len(text) > 280:
         text = text[:277] + "..."
-    return f"- {text} - {_src(item)}"
+    source = _src(item)
+    # Fix for BUG-11: no dangling " - " when the item has no url/source.
+    return f"- {text} - {source}" if source else f"- {text}"
+
+
+def _as_item(item: Any) -> dict[str, Any]:
+    # Fix for BUG-10: models sometimes send plain strings instead of objects.
+    return item if isinstance(item, dict) else {"title": str(item)}
 
 
 def render_digest(items: list[dict[str, Any]] | None = None, template: str = "sections", headline: str = "") -> dict[str, Any]:
-    items = items or []
+    items = [_as_item(item) for item in (items or [])]
     if template == "brief":
         markdown = (f"**{headline}**\n\n" if headline else "") + "\n".join(_bullet(item) for item in items[:5])
     elif template == "bullets":

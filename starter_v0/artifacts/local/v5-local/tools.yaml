@@ -1,0 +1,55 @@
+# Local small-model variant (v5-local, same as v4-local): short descriptions with an example, only the tools the base suite needs.
+tools:
+  - name: clarify
+    description: "Ask the user for a missing account/URL (response_type=text) or for yes/no confirmation before sending (response_type=yes_no)."
+    parameters:
+      type: object
+      properties:
+        question: {type: string, description: "Question to the user"}
+        response_type: {type: string, enum: [text, yes_no], description: "text or yes_no"}
+      required: [question, response_type]
+
+  - name: timeline
+    description: "Latest tweets BY one person. Example: 'tweet của Sam Altman' → {screenname: 'sama'}."
+    parameters:
+      type: object
+      properties:
+        screenname: {type: string, description: "Handle without @. Sam Altman=sama, Elon Musk=elonmusk, Andrej Karpathy=karpathy"}
+        limit: {type: integer, description: "Number of tweets the user asked for, default 5"}
+      required: [screenname]
+
+  - name: social_search
+    description: "Tweets ABOUT a topic. Example: 'top tweet về OpenAI' → {query: 'OpenAI', search_type: 'Top'}."
+    parameters:
+      type: object
+      properties:
+        query: {type: string, description: "Topic keyword only"}
+        search_type: {type: string, enum: [Latest, Top], description: "Top if popular/phổ biến/top, else Latest"}
+      required: [query]
+
+  - name: lookup
+    description: "Web news search. Example: 'tin AI hôm nay' → {query: 'AI', topic: 'news', timeframe: 'day'}."
+    parameters:
+      type: object
+      properties:
+        query: {type: string, description: "Topic keyword only, no time words"}
+        topic: {type: string, enum: [general, news], description: "news for tin tức/news"}
+        timeframe: {type: string, enum: [day, week, month, year], description: "hôm nay=day, tuần này=week"}
+      required: [query]
+
+  - name: fetch
+    description: "Read one URL the user gave. Example: 'tóm tắt https://a.com/x' → {url: 'https://a.com/x'}."
+    parameters:
+      type: object
+      properties:
+        url: {type: string, description: "Exact URL from the message"}
+      required: [url]
+
+  - name: send
+    description: "Post to Telegram. ONLY after the user said yes. Otherwise use clarify yes_no."
+    parameters:
+      type: object
+      properties:
+        text: {type: string, description: "Confirmed text"}
+        confirmed: {type: boolean, description: "true only after user said yes"}
+      required: [text, confirmed]

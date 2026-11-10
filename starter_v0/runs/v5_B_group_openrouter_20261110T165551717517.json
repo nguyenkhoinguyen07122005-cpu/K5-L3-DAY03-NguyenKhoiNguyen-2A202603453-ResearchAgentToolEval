@@ -1,0 +1,1256 @@
+{
+  "run_id": "v5_B_group_openrouter_20261110T165551717517",
+  "version": "v5",
+  "artifact_version": "v5+pfd25f1a8bdd8+t4e3180c18921",
+  "prompt_hash": "fd25f1a8bdd8de93685cb256b90428183d6031af650f51f589b4ac35e6ae6451",
+  "tools_hash": "4e3180c18921c82e5be60af84c495ae8d9677303ad4e2b86818e7d4f6530fc72",
+  "phase": "B",
+  "suite": "group",
+  "provider": "openrouter",
+  "model": "openai/gpt-4o-mini",
+  "system_prompt": "artifacts\\versions\\v5\\system_prompt.md",
+  "tools": "artifacts\\versions\\v5\\tools.yaml",
+  "eval_cases": "data\\eval_group.json",
+  "dataset_id": "day04_v2_research_group",
+  "dataset_role": "group",
+  "description": "Case do NHÓM tự viết thêm: 5 single-turn + 5 multi-turn. Cover routing tới 4 tool mới (wikipedia, hackernews, github_repos, hf_models), args mới (lang, sort, task, language), boundary send (xác nhận → gửi; từ chối → không gửi) và đổi tool giữa các lượt.",
+  "generated_at": "2026-11-10T16:55:51",
+  "summary": {
+    "total_cases": 10,
+    "measured_cases": 10,
+    "provider_error_cases": 0,
+    "passed_cases": 9,
+    "case_accuracy": 0.9,
+    "tool_routing_accuracy": 0.9,
+    "argument_accuracy": 0.9,
+    "multiturn_accuracy": 0.8,
+    "failure_counts": {
+      "wrong_boundary": 1
+    },
+    "observed_mismatch_counts": {
+      "extra_tool_call": 1
+    }
+  },
+  "results": [
+    {
+      "id": "G01_wikipedia_vi_concept",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "route_new_tool_wikipedia",
+        "difficulty": "medium",
+        "what_it_tests": "Hỏi khái niệm + nói rõ Wikipedia tiếng Việt → tool mới wikipedia với lang=vi, không dùng lookup."
+      },
+      "input": "Tra Wikipedia tiếng Việt giúp mình: học tăng cường (reinforcement learning) là gì?",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "wikipedia",
+            "args": {
+              "lang": "vi"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "wikipedia",
+            "args": {
+              "query": "học tăng cường",
+              "lang": "vi"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "wikipedia",
+          "args": {
+            "query": "học tăng cường",
+            "lang": "vi"
+          },
+          "result": {
+            "tool": "wiki_search",
+            "query": "học tăng cường",
+            "lang": "vi",
+            "items": [
+              {
+                "title": "Học tăng cường",
+                "url": "https://vi.wikipedia.org/wiki/H%E1%BB%8Dc_t%C4%83ng_c%C6%B0%E1%BB%9Dng",
+                "source": "vi.wikipedia.org",
+                "description": "",
+                "summary": "Trong ngành khoa học máy tính, học tăng cường là một lĩnh vực con của học máy, nghiên cứu cách thức một agent trong một môi trường nên chọn thực hiện các hành động nào để cực đại hóa một khoản thưởng (reward) nào đó về lâu dài. Các thuật toán học tăng cường cố gắng tìm một chiến lược ánh xạ các trạng thái của thế giới tới các hành động mà agent nên chọn trong các trạng thái đó."
+              },
+              {
+                "title": "Q-learning (học tăng cường)",
+                "url": "https://vi.wikipedia.org/wiki/Q-learning_%28h%E1%BB%8Dc_t%C4%83ng_c%C6%B0%E1%BB%9Dng%29",
+                "source": "vi.wikipedia.org",
+                "description": "",
+                "summary": "Q -learning là một thuật toán học tăng cường không mô hình. Mục tiêu của Q-learning là học một chính sách, chính sách cho biết máy sẽ thực hiện hành động"
+              },
+              {
+                "title": "Không mô hình (học tăng cường)",
+                "url": "https://vi.wikipedia.org/wiki/Kh%C3%B4ng_m%C3%B4_h%C3%ACnh_%28h%E1%BB%8Dc_t%C4%83ng_c%C6%B0%E1%BB%9Dng%29",
+                "source": "vi.wikipedia.org",
+                "description": "",
+                "summary": "Trong học tăng cường (RL), một thuật toán không mô hình (trái ngược với một thuật toán dựa trên mô hình) là một thuật toán mà không sử dụng các phân bố"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G02_hackernews_top_week",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "route_new_tool_hackernews_args",
+        "difficulty": "medium",
+        "what_it_tests": "Nhắc Hacker News → hackernews (không phải social_search); 'tuần này' → timeframe=week, 'nhiều điểm nhất' → sort=top, query chỉ là keyword."
+      },
+      "input": "Tuần này trên Hacker News dân dev bàn gì về Rust? Lấy các bài nhiều điểm nhất.",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "hackernews",
+            "args": {
+              "query": "Rust",
+              "sort": "top",
+              "timeframe": "week"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "hackernews",
+            "args": {
+              "query": "Rust",
+              "sort": "top",
+              "timeframe": "week"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_arg_value",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "hackernews",
+          "args": {
+            "query": "Rust",
+            "sort": "top",
+            "timeframe": "week"
+          },
+          "result": {
+            "tool": "hn_search",
+            "query": "Rust",
+            "sort": "top",
+            "timeframe": "week",
+            "items": [
+              {
+                "title": "KetchUp – Open-source SketchUp alternative built with Rust and WebGPU",
+                "url": "https://ketchup3d.github.io/app/",
+                "discussion_url": "https://news.ycombinator.com/item?id=50418176",
+                "source": "ketchup3d.github.io",
+                "summary": "KetchUp – Open-source SketchUp alternative built with Rust and WebGPU",
+                "date": "2026-11-08T22:35:35Z",
+                "metrics": {
+                  "points": 740,
+                  "comments": 226
+                },
+                "author": "dcoulmbe"
+              },
+              {
+                "title": "The Ubuntu 26.04 Rust sudo is not compatible with standard sudo",
+                "url": "https://utcc.utoronto.ca/~cks/space/blog/linux/Ubuntu2604RustSudoNotCompatible",
+                "discussion_url": "https://news.ycombinator.com/item?id=50354308",
+                "source": "utcc.utoronto.ca",
+                "summary": "The Ubuntu 26.04 Rust sudo is not compatible with standard sudo",
+                "date": "2026-11-03T16:43:54Z",
+                "metrics": {
+                  "points": 209,
+                  "comments": 201
+                },
+                "author": "wondersky"
+              },
+              {
+                "title": "Rune: A native GPU-rendered Rust UI framework for macOS, Windows, Linux and web",
+                "url": "https://github.com/anomalyco/rune",
+                "discussion_url": "https://news.ycombinator.com/item?id=50394569",
+                "source": "github.com",
+                "summary": "Rune: A native GPU-rendered Rust UI framework for macOS, Windows, Linux and web",
+                "date": "2026-11-06T16:31:32Z",
+                "metrics": {
+                  "points": 179,
+                  "comments": 131
+                },
+                "author": "mik3y"
+              },
+              {
+                "title": "Clj.rs – a Clojure dialect implemented in Rust",
+                "url": "https://clj.rs/",
+                "discussion_url": "https://news.ycombinator.com/item?id=50366902",
+                "source": "clj.rs",
+                "summary": "Clj.rs – a Clojure dialect implemented in Rust",
+                "date": "2026-11-04T15:23:16Z",
+                "metrics": {
+                  "points": 173,
+                  "comments": 69
+                },
+                "author": "simonpure"
+              },
+              {
+                "title": "Show HN: Firenook – Firebase emulators in Rust: 40× faster writes, 10× less RAM",
+                "url": "https://firenook.dev/",
+                "discussion_url": "https://news.ycombinator.com/item?id=50378643",
+                "source": "firenook.dev",
+                "summary": "Hi HN, we have been developing with Firebase for a long time, and the only way Firebase developers can build apps without directly costing them is using the official Firebase Emulator Suite.<p>However, the issue with this suite is, it&#x27;s dependent and running on Java with a old Console UI (not updated in years), that was not built to support tons and millions of data and has pretty bad developer experience. For a long time, we were hitting Out of Memory on even high specs laptop while develo",
+                "date": "2026-11-05T13:07:29Z",
+                "metrics": {
+                  "points": 173,
+                  "comments": 30
+                },
+                "author": "sanjevirau"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G03_github_top_stars",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "route_new_tool_github",
+        "difficulty": "easy",
+        "what_it_tests": "Tìm repo mã nguồn mở → github_repos, '5 repo' → limit=5, 'nhiều sao nhất' → sort=stars."
+      },
+      "input": "Tìm 5 repo GitHub nhiều sao nhất về LLM agent framework.",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "github_repos",
+            "args": {
+              "sort": "stars",
+              "limit": 5
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "github_repos",
+            "args": {
+              "query": "LLM agent framework",
+              "sort": "stars",
+              "limit": 5
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_arg_value",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "github_repos",
+          "args": {
+            "query": "LLM agent framework",
+            "sort": "stars",
+            "limit": 5
+          },
+          "result": {
+            "tool": "github_search",
+            "query": "LLM agent framework",
+            "api_query": "LLM agent framework",
+            "sort": "stars",
+            "total_count": 7468,
+            "items": [
+              {
+                "title": "langchain-ai/langchain",
+                "url": "https://github.com/langchain-ai/langchain",
+                "source": "github.com",
+                "summary": "The agent engineering platform.",
+                "language": "Python",
+                "date": "2026-11-10T08:28:09Z",
+                "metrics": {
+                  "stars": 149296,
+                  "forks": 25103
+                }
+              },
+              {
+                "title": "TauricResearch/TradingAgents",
+                "url": "https://github.com/TauricResearch/TradingAgents",
+                "source": "github.com",
+                "summary": "TradingAgents: Multi-Agents LLM Financial Trading Framework",
+                "language": "Python",
+                "date": "2026-11-04T10:13:58Z",
+                "metrics": {
+                  "stars": 121763,
+                  "forks": 23302
+                }
+              },
+              {
+                "title": "FoundationAgents/MetaGPT",
+                "url": "https://github.com/FoundationAgents/MetaGPT",
+                "source": "github.com",
+                "summary": "🌟 The Multi-Agent Framework: First AI Software Company, Towards Natural Language Programming",
+                "language": "Python",
+                "date": "2026-01-21T10:12:33Z",
+                "metrics": {
+                  "stars": 71237,
+                  "forks": 9107
+                }
+              },
+              {
+                "title": "AstrBotDevs/AstrBot",
+                "url": "https://github.com/AstrBotDevs/AstrBot",
+                "source": "github.com",
+                "summary": "AI Agent Assistant & development framework that integrates lots of IM platforms, LLMs, plugins and AI feature, and can be your openclaw alternative. ✨",
+                "language": "Python",
+                "date": "2026-11-10T02:34:14Z",
+                "metrics": {
+                  "stars": 46578,
+                  "forks": 3463
+                }
+              },
+              {
+                "title": "langchain-ai/langgraph",
+                "url": "https://github.com/langchain-ai/langgraph",
+                "source": "github.com",
+                "summary": "Build resilient agents.",
+                "language": "Python",
+                "date": "2026-11-10T05:42:48Z",
+                "metrics": {
+                  "stars": 44739,
+                  "forks": 7708
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G04_hf_models_task",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "route_new_tool_hf_models",
+        "difficulty": "medium",
+        "what_it_tests": "Model trên Hugging Face → hf_models (không phải papers/lookup), map task thành pipeline tag text-to-image, 'tải nhiều nhất' → sort=downloads."
+      },
+      "input": "Model text-to-image nào đang được tải nhiều nhất trên Hugging Face?",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "hf_models",
+            "args": {
+              "task": "text-to-image",
+              "sort": "downloads"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "hf_models",
+            "args": {
+              "task": "text-to-image",
+              "sort": "downloads"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "hf_models",
+          "args": {
+            "task": "text-to-image",
+            "sort": "downloads"
+          },
+          "result": {
+            "tool": "hf_model_search",
+            "query": "",
+            "task": "text-to-image",
+            "sort": "downloads",
+            "items": [
+              {
+                "title": "Comfy-Org/Qwen-Image-2.1",
+                "url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1",
+                "source": "huggingface.co",
+                "summary": "task=text-to-image; downloads=10238176; likes=1302",
+                "task": "text-to-image",
+                "date": "2026-09-15T19:41:09.000Z",
+                "metrics": {
+                  "downloads": 10238176,
+                  "likes": 1302
+                }
+              },
+              {
+                "title": "stabilityai/stable-diffusion-xl-base-1.0",
+                "url": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0",
+                "source": "huggingface.co",
+                "summary": "task=text-to-image; downloads=4652045; likes=8458",
+                "task": "text-to-image",
+                "date": "2023-07-25T13:25:51.000Z",
+                "metrics": {
+                  "downloads": 4652045,
+                  "likes": 8458
+                }
+              },
+              {
+                "title": "Comfy-Org/Krea-2",
+                "url": "https://huggingface.co/Comfy-Org/Krea-2",
+                "source": "huggingface.co",
+                "summary": "task=text-to-image; downloads=4464828; likes=807",
+                "task": "text-to-image",
+                "date": "2026-06-16T22:31:20.000Z",
+                "metrics": {
+                  "downloads": 4464828,
+                  "likes": 807
+                }
+              },
+              {
+                "title": "unsloth/Qwen-Image-2.1-GGUF",
+                "url": "https://huggingface.co/unsloth/Qwen-Image-2.1-GGUF",
+                "source": "huggingface.co",
+                "summary": "task=text-to-image; downloads=1629120; likes=463",
+                "task": "text-to-image",
+                "date": "2026-09-21T13:04:48.000Z",
+                "metrics": {
+                  "downloads": 1629120,
+                  "likes": 463
+                }
+              },
+              {
+                "title": "unsloth/Qwen-Image-2.1-Turbo-GGUF",
+                "url": "https://huggingface.co/unsloth/Qwen-Image-2.1-Turbo-GGUF",
+                "source": "huggingface.co",
+                "summary": "task=text-to-image; downloads=1353233; likes=83",
+                "task": "text-to-image",
+                "date": "2026-10-10T05:33:27.000Z",
+                "metrics": {
+                  "downloads": 1353233,
+                  "likes": 83
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G05_arxiv_newest_sort",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "arg_papers_sort_newest",
+        "difficulty": "medium",
+        "what_it_tests": "'mới nhất' với paper → sort_by=submittedDate thay vì relevance mặc định."
+      },
+      "input": "Tìm các paper arXiv mới nhất về speculative decoding.",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "papers",
+            "args": {
+              "sort_by": "submittedDate"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "papers",
+            "args": {
+              "query": "speculative decoding",
+              "max_results": 5,
+              "sort_by": "submittedDate"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_arg_value",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "papers",
+          "args": {
+            "query": "speculative decoding",
+            "max_results": 5,
+            "sort_by": "submittedDate"
+          },
+          "result": {
+            "tool": "arxiv_search",
+            "query": "speculative decoding",
+            "api_query": "all:speculative AND all:decoding",
+            "total_results": 980,
+            "items": [
+              {
+                "arxiv_id": "2611.12737v1",
+                "title": "Inference Validation for Regulated AI: Building a Decision Pipeline on NVIDIA AIPerf",
+                "summary": "Deploying large language models in regulated industries requires more than picking the fastest inference engine: it requires evidence that a configuration meets contractual and legal obligations before it serves a single customer request. We describe Runway, an internal validation harness built at MasterControl that builds a governed decision pipeline around NVIDIA AIPerf. The key insight is separating concerns: AIPerf provides the trusted measurement, while Runway provides the experiment design that comes before it and the compliance, cost, and audit decisions that come after. We describe the architecture and the storage model that makes caching and audit one mechanism. We report three findings from Runway sweeps: TensorRT-LLM and vLLM rankings invert with concurrency; a newer, pricier GPU instance can be the cheaper one per request; and speculative decoding behaves differently across engines under load, so engine configuration can outweigh engine choice.",
+                "authors": [
+                  "Dev Akre",
+                  "Roman Bobalo",
+                  "Manoj Dobbali"
+                ],
+                "published": "2026-11-09T17:21:17Z",
+                "updated": "2026-11-09T17:21:17Z",
+                "url": "http://arxiv.org/abs/2611.12737v1",
+                "pdf_url": "https://arxiv.org/pdf/2611.12737v1",
+                "source": "arxiv.org",
+                "primary_category": "cs.SE",
+                "categories": [
+                  "cs.SE",
+                  "cs.LG",
+                  "cs.PF"
+                ]
+              },
+              {
+                "arxiv_id": "2611.12464v1",
+                "title": "Phrase-Level Speculative Decoding on a Frozen Target",
+                "summary": "Speculative decoders raise throughput by banking more target tokens per forward pass, and Medusa, EAGLE-3, DFlash and DSpark all do it the same way: more candidates that survive verification. All of them draft in the target's own vocabulary, so one node of the candidate tree is one target token, and the tokenizer makes that unit look like a constant. It is not. BPE's pretokenizer splits on whitespace before merges are learned, so no multi-word string can ever become a single token: in Qwen3-4B, \"United States of America\" is four tokens and no adjacent pair of them exists as one entry, so a phrase is out of reach of any method drafting in the target's vocabulary. We change the unit. A small MLP head reads the frozen target's hidden state and predicts a one- to three-word phrase as one entry in a separate draft vocabulary; greedy longest-match expansion maps it back into the target's own tokens, and N candidates are verified in one forward pass behind a prefix-tree mask, so the change is orthogonal to tree depth and width. The target and its tokenizer stay frozen and a candidate is accepted only while it matches the target's own argmax, so the served output is identical to greedy decoding up to floating-point tie-breaking. On one A5000 at batch 1, against HuggingFace generate(), a 21.94M head (0.545% of Qwen3-4B) reaches 2.391x on GSM8K, 2.444x on MATH-500 and 1.544x on MT-Bench. Because the head's output layer is one row of 257 parameters per entry, the draft vocabulary size is the parameter budget: an 8,000-entry head is 3.434M parameters, 0.0854% of the target and 64x smaller than EAGLE-3's drafter, and keeps 92.3% of the larger head's GSM8K tokens per pass. With EAGLE-3 run on same prompts and baseline, our 21.94M head is ahead of tree-16 on both maths sets and behind tree-60 on every set.",
+                "authors": [
+                  "Madhusudhana Naidu"
+                ],
+                "published": "2026-11-09T14:13:32Z",
+                "updated": "2026-11-09T14:13:32Z",
+                "url": "http://arxiv.org/abs/2611.12464v1",
+                "pdf_url": "https://arxiv.org/pdf/2611.12464v1",
+                "source": "arxiv.org",
+                "primary_category": "cs.CL",
+                "categories": [
+                  "cs.CL",
+                  "cs.AI",
+                  "cs.LG"
+                ]
+              },
+              {
+                "arxiv_id": "2611.12356v1",
+                "title": "DForkTree: Accelerating Speculative Decoding with Fork-Aware Block Diffusion Draft Trees",
+                "summary": "Speculative decoding speeds up language models by letting a lightweight drafter propose several future tokens that the target model verifies in parallel. Block diffusion drafters such as DFlash draft a whole block in one forward pass, and DDTree builds a draft tree from their per-position distributions. Each of these distributions assumes that the drafter's own most likely continuation is correct. A tree, however, gains over a chain only on branches that leave this continuation, where the drafter's top-1 accuracy drops from 89% to 18% and its candidate lists miss the right token far more often. When re-run from the fork token, the same drafter is usually correct, so the errors come from the prefix that the distributions condition on rather than from what the drafter knows. We introduce DForkTree, a training-free method that re-anchors each branch on its own tokens. DForkTree adds n-gram statistics from the target model's own outputs to the drafter's scores as pointwise mutual information, weights them more after the fork, and builds the optimal tree under these scores exactly on the GPU. On Qwen3.5-4B and 9B, with all tree methods sharing one drafter, tree pipeline and verifier, DForkTree is the fastest tree method on every benchmark. It is up to 41.5% faster than DFlash and 15.1% faster than DDTree in the same setting, with average speedups of up to 4.75x over autoregressive decoding.",
+                "authors": [
+                  "Zhicheng Zheng",
+                  "Cheng Zhang",
+                  "Chenkai Tang"
+                ],
+                "published": "2026-11-09T13:06:52Z",
+                "updated": "2026-11-09T13:06:52Z",
+                "url": "http://arxiv.org/abs/2611.12356v1",
+                "pdf_url": "https://arxiv.org/pdf/2611.12356v1",
+                "source": "arxiv.org",
+                "primary_category": "cs.AI",
+                "categories": [
+                  "cs.AI"
+                ]
+              },
+              {
+                "arxiv_id": "2611.11371v1",
+                "title": "D3Tree: Learning to Prune Block-Diffusion Draft Trees for Efficient Verification",
+                "summary": "Block-diffusion drafters propose a whole block of tokens in one forward pass, and draft trees built from their position-wise marginals increase the expected accepted length of speculative decoding. Every tree node occupies a query row in target verification, so under concurrent serving low-yield branches compete with other requests for verification capacity. Existing tree methods select verified nodes by draft probability under a fixed or cost-selected per-request budget, and thus always retain a prefix of the drafter's ranking. We present D3Tree, which learns which nodes of a block-diffusion draft tree are worth verifying. A tree-size head with 2H+2 parameters predicts each candidate's conditional survival from the draft state, the candidate embedding, and its draft log-probability. Thresholding the product of these scores along parent chains yields an ancestor-closed subtree whose size adapts to each request and decoding round. The head is trained on a frozen drafter with conditional labels on the full candidate tree; an optional joint mode also steers the drafter toward the retained reference path. At serving time, D3Tree verifies whole trees under light load and, under heavy load, allocates one batch-wide node budget by predicted survival, sized to the target's matrix-multiplication tiles. Retained trees share one ancestor-masked target pass, while construction, pruning, and scheduling run on the GPU and overlap with the host. Across six vision-language verifiers and 17 text and multimodal benchmarks, D3Tree is fastest in 70 of 72 load settings, with 3.2-4.0x speedup over autoregressive decoding for one request and 1.3-1.8x at 64 concurrent requests, where fixed-budget trees fall below autoregressive speed. Under a time-varying arrival trace, it has the lowest mean end-to-end latency in every arrival phase.",
+                "authors": [
+                  "Hong Nie",
+                  "Zhangchi Gao",
+                  "Jun Yu",
+                  "Bo Wang",
+                  "Jianqing Sun",
+                  "Shengping Liu"
+                ],
+                "published": "2026-11-08T13:29:14Z",
+                "updated": "2026-11-08T13:29:14Z",
+                "url": "http://arxiv.org/abs/2611.11371v1",
+                "pdf_url": "https://arxiv.org/pdf/2611.11371v1",
+                "source": "arxiv.org",
+                "primary_category": "cs.LG",
+                "categories": [
+                  "cs.LG",
+                  "cs.AI"
+                ]
+              },
+              {
+                "arxiv_id": "2611.11098v1",
+                "title": "Efficient VLA Inference via Retrieval-Based Speculation and Hardware Acceleration",
+                "summary": "Vision-language-action (VLA) models enable robots to understand and execute complex instructions, but their autoregressive (AR) action generation introduces significant latency on resource-constrained robotic platforms. Speculative decoding can accelerate AR-based inference by parallelizing action generation and verification; however, existing approaches rely on costly draft models, which are inefficient on edge platforms. In this paper, we propose Zora, a hardware-software co-design framework for accelerating AR-based VLA inference. Specifically, Zora introduces a lightweight retrieval-augmented generation (RAG)-based draft model that exploits robotic dynamics without additional neural draft models. We further reduce batch verification overhead through a kinematics-guided action-acceptance strategy and a KV-cache-sharing attention mechanism. To address the retrieval overhead introduced by RAG-based drafting, we co-design dedicated hardware support, Zora core, to address the memory irregularity in RAG-based drafting. We evaluate Zora on four VLA models with the LIBERO benchmark. Zora retains comparable accuracy while achieving up to 3.4$\\times$ speedup with software-only optimization and up to 7.6$\\times$ speedup with hardware support over GPUs.",
+                "authors": [
+                  "Zhengyang Cheng",
+                  "He Zhu",
+                  "Zeyu Guo",
+                  "Zihan Liu",
+                  "Anbang Wu",
+                  "Yiming Gan",
+                  "Jingwen Leng",
+                  "Yu Feng",
+                  "Minyi Guo"
+                ],
+                "published": "2026-11-08T03:28:09Z",
+                "updated": "2026-11-08T03:28:09Z",
+                "url": "http://arxiv.org/abs/2611.11098v1",
+                "pdf_url": "https://arxiv.org/pdf/2611.11098v1",
+                "source": "arxiv.org",
+                "primary_category": "cs.AR",
+                "categories": [
+                  "cs.AR",
+                  "cs.RO"
+                ]
+              }
+            ],
+            "rate_limit_note": "arXiv may return 429 if called too frequently; this tool waits at least 3 seconds between requests in-process."
+          }
+        }
+      ]
+    },
+    {
+      "id": "G06_multiturn_github_fill_language",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multiturn_carry_new_tool_args",
+        "difficulty": "hard",
+        "what_it_tests": "3 turns: carry chủ đề vector database, thêm filter language=Rust từ lượt 2, sort=stars từ lượt 3."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Tìm vài repo GitHub về vector database giúp mình"
+        },
+        {
+          "role": "user",
+          "content": "Chỉ lấy repo viết bằng Rust thôi"
+        },
+        {
+          "role": "user",
+          "content": "Sắp xếp theo số sao nhé"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "github_repos",
+            "args": {
+              "language": "Rust",
+              "sort": "stars"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "github_repos",
+            "args": {
+              "query": "vector database",
+              "language": "Rust",
+              "sort": "stars"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_arg_value",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "github_repos",
+          "args": {
+            "query": "vector database",
+            "language": "Rust",
+            "sort": "stars"
+          },
+          "result": {
+            "tool": "github_search",
+            "query": "vector database",
+            "api_query": "vector database language:Rust",
+            "sort": "stars",
+            "total_count": 457,
+            "items": [
+              {
+                "title": "qdrant/qdrant",
+                "url": "https://github.com/qdrant/qdrant",
+                "source": "github.com",
+                "summary": "Qdrant - High-performance, massive-scale Vector Database and Vector Search Engine for the next generation of AI. Also available in the cloud https://cloud.qdrant.io/",
+                "language": "Rust",
+                "date": "2026-11-10T09:39:09Z",
+                "metrics": {
+                  "stars": 35497,
+                  "forks": 2805
+                }
+              },
+              {
+                "title": "xerj-org/xerj",
+                "url": "https://github.com/xerj-org/xerj",
+                "source": "github.com",
+                "summary": "AI search engine and MCP server for bots and agents. One Rust binary indexes code, docs, logs, JSONL/CSV and PDFs for BM25 full-text, vector and hybrid search, code search without grep, agent memory and RAG. Elasticsearch-compatible API; Corpus Hub serves hundreds of reference memory corpora.",
+                "language": "Rust",
+                "date": "2026-11-10T08:29:32Z",
+                "metrics": {
+                  "stars": 18715,
+                  "forks": 1373
+                }
+              },
+              {
+                "title": "HelixDB/helix-db",
+                "url": "https://github.com/HelixDB/helix-db",
+                "source": "github.com",
+                "summary": "HelixDB is an OLTP graph database with native vector and full-text search built in Rust on Object Storage.",
+                "language": "Rust",
+                "date": "2026-11-09T17:36:19Z",
+                "metrics": {
+                  "stars": 6280,
+                  "forks": 395
+                }
+              },
+              {
+                "title": "cozodb/cozo",
+                "url": "https://github.com/cozodb/cozo",
+                "source": "github.com",
+                "summary": "A transactional, relational-graph-vector database that uses Datalog for query. The hippocampus for AI!",
+                "language": "Rust",
+                "date": "2024-12-04T12:49:06Z",
+                "metrics": {
+                  "stars": 4145,
+                  "forks": 169
+                }
+              },
+              {
+                "title": "tensorchord/pgvecto.rs",
+                "url": "https://github.com/tensorchord/pgvecto.rs",
+                "source": "github.com",
+                "summary": "Scalable, Low-latency and Hybrid-enabled Vector Search in Postgres. Revolutionize Vector Search, not Database.",
+                "language": "Rust",
+                "date": "2025-02-26T14:11:43Z",
+                "metrics": {
+                  "stars": 2191,
+                  "forks": 87
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G07_multiturn_send_after_yes",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "send_after_explicit_yes",
+        "difficulty": "hard",
+        "what_it_tests": "Nhánh ngược của R12: sau khi đã hỏi và user nói 'Có' → gọi send với đúng text đã xác nhận và confirmed=true (không hỏi lại vô hạn)."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Đăng lên Telegram câu này giúp mình: \"Bản tin AI hôm nay đã sẵn sàng\""
+        },
+        {
+          "role": "assistant",
+          "content": "Bạn xác nhận đăng nội dung sau lên Telegram không?\n\nBản tin AI hôm nay đã sẵn sàng"
+        },
+        {
+          "role": "user",
+          "content": "Có, đăng đi"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "send",
+            "args": {
+              "text": "Bản tin AI hôm nay đã sẵn sàng",
+              "confirmed": true
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "send",
+            "args": {
+              "text": "Bản tin AI hôm nay đã sẵn sàng",
+              "confirmed": true
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_boundary",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "send",
+          "args": {
+            "text": "Bản tin AI hôm nay đã sẵn sàng",
+            "confirmed": true
+          },
+          "result": {
+            "tool": "send_telegram",
+            "error": "RuntimeError",
+            "message": "Missing TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID env var"
+          }
+        }
+      ]
+    },
+    {
+      "id": "G08_multiturn_twitter_to_hn",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multiturn_switch_to_new_tool",
+        "difficulty": "hard",
+        "what_it_tests": "3 turns: bỏ social_search, chuyển sang hackernews, giữ chủ đề Claude, 'mới nhất' → sort=latest; không gọi thừa social_search."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Mọi người nói gì về Claude trên Twitter?"
+        },
+        {
+          "role": "user",
+          "content": "Thôi bỏ Twitter, xem trên Hacker News đi"
+        },
+        {
+          "role": "user",
+          "content": "Lấy các bài mới nhất"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "hackernews",
+            "args": {
+              "query": "Claude",
+              "sort": "latest"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "hackernews",
+            "args": {
+              "query": "Claude",
+              "sort": "latest",
+              "limit": 5
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "hackernews",
+          "args": {
+            "query": "Claude",
+            "sort": "latest",
+            "limit": 5
+          },
+          "result": {
+            "tool": "hn_search",
+            "query": "Claude",
+            "sort": "latest",
+            "timeframe": "all",
+            "items": [
+              {
+                "title": "Show HN: Run multiple Claude Desktop instances side by side on macOS",
+                "url": "https://github.com/Yuix-Networks/claude-orchestrator",
+                "discussion_url": "https://news.ycombinator.com/item?id=50437743",
+                "source": "github.com",
+                "summary": "Show HN: Run multiple Claude Desktop instances side by side on macOS",
+                "date": "2026-11-10T08:58:22Z",
+                "metrics": {
+                  "points": 1,
+                  "comments": 0
+                },
+                "author": "serdarakarca"
+              },
+              {
+                "title": "JPMorganChase expands Claude Code to more employees across the firm",
+                "url": "https://claude.com/resources/articles/jpmorganchase-expands-claude-code",
+                "discussion_url": "https://news.ycombinator.com/item?id=50436993",
+                "source": "claude.com",
+                "summary": "JPMorganChase expands Claude Code to more employees across the firm",
+                "date": "2026-11-10T07:02:35Z",
+                "metrics": {
+                  "points": 2,
+                  "comments": 3
+                },
+                "author": "geoffbp"
+              },
+              {
+                "title": "Show HN: Calculators for token costs and Claude Code API budgets",
+                "url": "https://modelfold.ai/tools/claude-code-cost",
+                "discussion_url": "https://news.ycombinator.com/item?id=50436457",
+                "source": "modelfold.ai",
+                "summary": "Show HN: Calculators for token costs and Claude Code API budgets",
+                "date": "2026-11-10T05:31:28Z",
+                "metrics": {
+                  "points": 2,
+                  "comments": 0
+                },
+                "author": "modelfold"
+              },
+              {
+                "title": "Ask HN: Are companies making money by using AI?",
+                "url": "https://news.ycombinator.com/item?id=50435819",
+                "discussion_url": "https://news.ycombinator.com/item?id=50435819",
+                "source": "news.ycombinator.com",
+                "summary": "AI news is focused on the same companies improving their models. But I am really interested in getting opinions about companies that are actually making money by using AI, either by granting access to Claude or by including some sort of AI feature in their products.",
+                "date": "2026-11-10T03:49:10Z",
+                "metrics": {
+                  "points": 2,
+                  "comments": 6
+                },
+                "author": "vanh4lt"
+              },
+              {
+                "title": "Notes on Fable 5.2",
+                "url": "https://llmleaderboard.com/guides/claude-fable-5-2",
+                "discussion_url": "https://news.ycombinator.com/item?id=50435663",
+                "source": "llmleaderboard.com",
+                "summary": "Notes on Fable 5.2",
+                "date": "2026-11-10T03:20:16Z",
+                "metrics": {
+                  "points": 1,
+                  "comments": 0
+                },
+                "author": "anitakirkovska"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G09_multiturn_wiki_correction",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multiturn_correction_new_tool",
+        "difficulty": "hard",
+        "what_it_tests": "3 turns: sửa người (Yann LeCun → Geoffrey Hinton), lang=en; không gọi thêm cho Yann LeCun."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Tra Wikipedia về Yann LeCun giúp mình"
+        },
+        {
+          "role": "user",
+          "content": "À nhầm, Geoffrey Hinton cơ"
+        },
+        {
+          "role": "user",
+          "content": "Lấy bản tiếng Anh nhé"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "wikipedia",
+            "args": {
+              "query": "Geoffrey Hinton",
+              "lang": "en"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "wikipedia",
+            "args": {
+              "query": "Geoffrey Hinton",
+              "lang": "en"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_arg_value",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "wikipedia",
+          "args": {
+            "query": "Geoffrey Hinton",
+            "lang": "en"
+          },
+          "result": {
+            "tool": "wiki_search",
+            "query": "Geoffrey Hinton",
+            "lang": "en",
+            "items": [
+              {
+                "title": "Geoffrey Hinton",
+                "url": "https://en.wikipedia.org/wiki/Geoffrey_Hinton",
+                "source": "en.wikipedia.org",
+                "description": "British-Canadian computer scientist (born 1947)",
+                "summary": "Geoffrey Everest Hinton is a British-Canadian computer scientist, cognitive scientist, cognitive psychologist and Nobel Prize laureate known for his work on artificial neural networks, which earned him the title \"the Godfather of AI\". He is University Professor Emeritus at the University of Toronto."
+              },
+              {
+                "title": "Artificial intelligence",
+                "url": "https://en.wikipedia.org/wiki/Artificial_intelligence",
+                "source": "en.wikipedia.org",
+                "description": "Intelligence in machines",
+                "summary": "Intelligence in machines — Bibcode:2012ISPM...29...82H. doi:10.1109/msp.2012.2205597. Geoffrey Hinton. AI: What Could Go Wrong? with Geoffrey Hinton. Interviewed by Jon Stewart. The Weekly Show"
+              },
+              {
+                "title": "P(doom)",
+                "url": "https://en.wikipedia.org/wiki/P%28doom%29",
+                "source": "en.wikipedia.org",
+                "description": "Probability of existentially catastrophic outcomes in AI",
+                "summary": "Probability of existentially catastrophic outcomes in AI — 2023 following the release of GPT-4, as high-profile figures such as Geoffrey Hinton and Yoshua Bengio began to warn of the risks of AI. In a 2023 survey"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G10_multiturn_cancel_send",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "cancel_send_then_search",
+        "difficulty": "hard",
+        "what_it_tests": "3 turns: user huỷ hành động ghi → KHÔNG gọi send (gọi thừa = fail), chuyển sang lookup news + timeframe=week."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Đăng bản tin AI lên Telegram giúp mình"
+        },
+        {
+          "role": "assistant",
+          "content": "Bạn xác nhận đăng bản tin lên Telegram không?"
+        },
+        {
+          "role": "user",
+          "content": "Khoan, đừng đăng. Chỉ tìm cho mình tin công nghệ tuần này trên web thôi"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "topic": "news",
+              "timeframe": "week"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": false,
+        "routing_correct": false,
+        "args_correct": false,
+        "actual_tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "công nghệ",
+              "topic": "news",
+              "timeframe": "week",
+              "max_results": 5
+            }
+          },
+          {
+            "name": "lookup",
+            "args": {
+              "query": "AI",
+              "topic": "news",
+              "timeframe": "week",
+              "max_results": 5
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_boundary",
+        "observed_mismatch": "extra_tool_call",
+        "failure_type": "wrong_boundary",
+        "failures": [
+          "extra tool call lookup"
+        ]
+      },
+      "tool_results": [
+        {
+          "tool": "lookup",
+          "args": {
+            "query": "công nghệ",
+            "topic": "news",
+            "timeframe": "week",
+            "max_results": 5
+          },
+          "result": {
+            "tool": "web_search",
+            "query": "công nghệ",
+            "topic": "news",
+            "timeframe": "week",
+            "items": [
+              {
+                "title": "Sở Khoa học và Công nghệ Hà Tĩnh hướng dẫn xét công nhận sáng kiến và đánh giá hiệu quả đề tài khoa học",
+                "url": "https://hatinh.gov.vn/vi/bai-viet/so-khoa-hoc-va-cong-nghe-ha-tinh-huong-dan-xet-cong-nhan-sang-kien-va-danh-gia-hieu-qua-de-tai-khoa-hoc",
+                "source": "hatinh.gov.vn",
+                "summary": "Theo hướng dẫn, các giải pháp được xem xét công nhận là sáng kiến bao gồm: giải pháp kỹ thuật, giải pháp quản lý, giải pháp tác nghiệp và giải pháp ứng dụng tiến bộ kỹ thuật. Trong đó, giải pháp kỹ thuật có thể là sản phẩm, vật liệu, giống cy trồng, vật nuôi hoặc quy trình công nghệ; giải pháp quản lý là phương pháp tổ chức, điều hành công việc; giải pháp tác nghiệp là các phương pháp thực hiện nghiệp vụ chuyên môn; còn giải pháp ứng dụng tiến bộ kỹ thuật là việc áp dụng các giải pháp kỹ thuật",
+                "score": 0.25643653
+              },
+              {
+                "title": "Định hướng thúc đẩy ngoại giao khoa học và công nghệ",
+                "url": "https://nhandan.vn/dinh-huong-thuc-day-ngoai-giao-khoa-hoc-va-cong-nghe-post1000120.html",
+                "source": "nhandan.vn",
+                "summary": "Để phát huy hơn nữa tiềm năng này, bà Đỗ Quỳnh Hoa cho biết, Bộ Khoa học và Công nghệ cần triển khai đồng bộ một số định hướng trọng tm. Theo đó, các hội nghị, hội thảo cần gắn với những chương trình hợp tác cụ thể, như nghiên cứu chung, chuyển giao và làm chủ công nghệ, đào tạo nhn lực, trao đổi nhà khoa học và phát triển các nhóm nghiên cứu quốc tế, nhất là trong những lĩnh vực công nghệ chiến lược và Việt Nam có nhu cầu ưu tiên. [...] Công nhn và kỹ sư Công ty cổ phần Thiết bị và Giải pháp Cơ khí Automech ở Khu công nghiệp Đình Trám (Bắc Ninh) sản xuất các thiết bị gia công cơ khí chính xác, tự động hóa. (Ảnh: TRẦN HẢI)  \n\n## Đồng hành cùng doanh nghiệp đổi mới công nghệ\n\nTổng Bí thư, Chủ tịch nước Tô Lm chủ trì cuộc làm việc với Ban Chính sách, chiến lược Trung ương về phát triển công nghiệp vật liệu. (Ảnh: ĐĂNG KHOA)  \n\n## Xy dựng nhn lực làm chủ công nghiệp vật liệu [...] # Định hướng thúc đẩy ngoại giao khoa học và công nghệ\n\nChia sẻ tại họp báo của Bộ Khoa học và Công nghệ ngày 4/11, đại diện Vụ Hợp tác quốc tế (Bộ Khoa học và Công nghệ) cho biết, Bộ Khoa học và Công nghệ sẽ tiếp tục thúc đẩy hợp tác quốc tế theo hướng thực chất, hiệu quả, tăng cường kết nối các đối tác, chuyên gia và tổ chức khoa học trong và ngoài nước.\n\nPrefer Nhan Dan on Google\n\n Quang cảnh buổi họp báo của Bộ Khoa học và Công nghệ ngày 4/11. ( Ảnh: HÀ LINH)",
+                "score": 0.2561085
+              },
+              {
+                "title": "Elon Musk: 'Công nghệ Neuralink có thể chữa mù' - Báo VnExpress",
+                "url": "https://vnexpress.net/elon-musk-cong-nghe-neuralink-co-the-chua-mu-5139934.html",
+                "source": "vnexpress.net",
+                "summary": "Theo Tom's Hardware, Blindsight khác với đa số công nghệ hiện nay, vốn tập trung vào truyền tín hiệu từ não bộ để điều khiển thiết bị bên ngoài. Ví dụ, ốc tai điện tử và thiết bị cấy ghép thần kinh cảm giác gửi tín hiệu từ cảm biến vào não, giúp người khiếm thính nghe lại và bệnh nhn lấy lại xúc giác. Trong khi đó, Blindsight hướng đến thiết lập đường dẫn thị giác nhn tạo, cho phép bệnh nhn dùng camera để thu thập hình ảnh, sau đó chuyển đổi tín hiệu thành dạng mà não bộ hiểu được thông qua [...] Dù không phải công ty đầu tiên nghiên cứu về giao diện não - máy tính, Neuralink là một trong những tên tuổi thành công nhất, phần nào nhờ hỗ trợ tài chính từ Musk. Một số doanh nghiệp khác cũng nỗ lực nghiên cứu công nghệ tương tự. Ví dụ, Meta phát triển máy quét điện não đồ từ trường không xm lấn cho phép người dùng chuyển suy nghĩ thành những thao tác nhấn phím, trong khi startup Trung Quốc NeuroXess, thành lập năm 2021, đang đẩy nhanh tiến độ để thử nghiệm trên người trong năm nay.",
+                "score": 0.25222787
+              },
+              {
+                "title": "Cổ phiếu công nghệ Mỹ bị bán tháo, thổi bay mức kỷ lục 2.300 tỷ USD vốn hóa | Báo Dân trí",
+                "url": "https://dantri.com.vn/kinh-doanh/co-phieu-cong-nghe-my-bi-ban-thao-thoi-bay-muc-ky-luc-2300-ty-usd-von-hoa-20261106080014669.htm",
+                "source": "dantri.com.vn",
+                "summary": "Chỉ số Nasdaq 100 giảm 6,4%, thổi bay 2.300 tỷ USD giá trị vốn hóa, mức lớn nhất từng ghi nhận. Lĩnh vực công nghệ dẫn đầu đợt bán tháo lan rộng khắp các nhóm ngành, kéo chỉ số S&P 500 giảm 4,4%. Đy là mức giảm mạnh nhất kể từ tháng 4/2025, khi thị trường chao đảo vì đợt thuế quan đối ứng của Tổng thống Mỹ Donald Trump. Chỉ số đo lường cổ phiếu bán dẫn Mỹ lao dốc 12%, ghi nhận ngày tồi tệ nhất kể từ khi đại dịch Covid-19 bùng phát vào tháng 3/2020. [...] Kinh doanh\n\n# Cổ phiếu công nghệ Mỹ bị bán tháo, thổi bay mức kỷ lục 2.300 tỷ USD vốn hóa\n\nXun Hoa\n\nXun Hoa\n\n## (Dn trí) - Cổ phiếu công nghệ lao dốc mạnh nhất kể từ năm 2020 trong phiên 5/11 khi nhà đầu tư rút lo ngại về làn sóng đầu tư vào AI sau khi Đảng Dn chủ thắng áp đảo trong cuộc bầu cử giữa nhiệm kỳ ở Mỹ. [...] “Trong chuỗi cung ứng AI đã có rất nhiều yếu tố định giá và biên lợi nhuận dựa trên sự khan hiếm, dù là ở các công ty bộ nhớ hay các công ty công nghiệp phục vụ trung tm dữ liệu”, ông Justin Bergner, nhà quản lý danh mục tại Gabelli Funds, nhận định. Ông nói thêm rằng thị trường đang phản ánh vào giá một quá trình xy dựng hạ tầng kéo dài hơn, điều sẽ khiến chuỗi cung ứng bớt căng thẳng và biên lợi nhuận thấp hơn.",
+                "score": 0.24413808
+              },
+              {
+                "title": "Từ nghiên cứu đến làm chủ công nghệ sản xuất 8 loại vắc xin - Cổng Thông tin điện tử Bộ Khoa học và Công nghệ",
+                "url": "https://mst.gov.vn/tu-nghien-cuu-den-lam-chu-cong-nghe-san-xuat-8-loai-vac-xin-197261108003918865.htm",
+                "source": "mst.gov.vn",
+                "summary": "Các kết quả nghiên cứu tập trung vào việc xy dựng, tiếp nhận, cải tiến và hoàn thiện quy trình công nghệ ở các công đoạn then chốt của quá trình sản xuất, từ chủng giống, nuôi cấy, thu hoạch, tinh chế đến pha chế, đóng gói và kiểm soát chất lượng. Qua đó, các đơn vị từng bước làm chủ quy trình sản xuất, nng cao năng lực nghiên cứu và sản xuất vắc xin trong nước.\n\nHiệu quả của cụm công trình được thể hiện rõ qua khả năng cung ứng sản phẩm cho thị trường và chương trình tiêm chủng. [...] Quay lại\n\nMột số từ viết tắt trên cổng TTĐT Bộ   In\n\nChia sẻ facebook Chia sẻ twitter Chia sẻ zalo Gửi mail Sao chép đường dẫn\n\n\n\nPhản ánh, kiến nghị văn bản   \nquy phạm pháp luật\n\nNghiên cứu cơ bản và ứng dụng công nghệ cao.\n\n Xem thêm\n\n\n\nDịch vụ hành chính công\n\nThông tin về Dịch vụ hành chính công Bộ Khoa học và Công nghệ; Hệ thống thông tin giải quyết TTHC\n\n Xem thêm\n\n\n\nSản phẩm dịch vụ,   \nKHCN, ĐMST\n\nThông tin giới thiệu về các sản phẩm, dịch vụ ngành Khoa học và Công nghệ\n\n Xem thêm [...] Khoa học và Công nghệ Đổi mới sáng tạo Chuyển đổi số Bưu chính, Viễn thông Sở hữu trí tuệ Tiêu chuẩn, đo lường, chất lượng Năng lượng nguyên tử Tin tổng hợp Tin địa phương\n Dịch vụ công\n Hệ thống văn bản  arrow-drop-down\n\n  Văn bản QPPL  Văn bản chỉ đạo điều hành   Lấy ý kiến người dn về dự thảo VBQPPL\n MST IOFFICE\n THỐNG KÊ  arrow-drop-down",
+                "score": 0.24385437
+              }
+            ]
+          }
+        },
+        {
+          "tool": "lookup",
+          "args": {
+            "query": "AI",
+            "topic": "news",
+            "timeframe": "week",
+            "max_results": 5
+          },
+          "result": {
+            "tool": "web_search",
+            "query": "AI",
+            "topic": "news",
+            "timeframe": "week",
+            "items": [
+              {
+                "title": "Voters deliver \"AI earthquake,\" rebuking tech and billionaires",
+                "url": "https://www.axios.com/2026/11/04/ai-data-center-election-slowdown",
+                "source": "axios.com",
+                "summary": "AI had its \"official debut\" as the biggest issue in American politics, former New York Assemblymember and RAISE Act author Alex Bores told Axios. \"AI is reaching into every part of our society and economy and it's now crystal clear it's impacting every part of our politics, too.\" [...] Voters showed deep distrust of the AI race Tuesday, approving dozens of data center moratoriums and electing a raft of candidates who favor slowing a $10 trillion buildout, including in Texas — the epicenter of the boom.\n\nWhy it matters: In an election that hinged on an affordability crisis for many Americans, voters made it clear they view Silicon Valley's AI ambitions not as a technological miracle, but as a resource-draining threat to their wallets and communities. [...] Democratic challengers successfully weaponized AI policy, ousting Republicans in Ohio, Wisconsin, Arizona and Pennsylvania.\n   Democratic groups had poured ads into these districts attacking GOP incumbents for a 2025 vote that would've neutered state AI legislation.\n   AI safety advocates won or were poised to win races on Tuesday that will expand their coalition in the new Congress, including Colorado's Manny Rutinel and Minnesota's Matt Little.",
+                "score": 0.31843266
+              },
+              {
+                "title": "A single AI model simulates the behavior of many substances, from sliding sand to folding proteins | MIT News | Massachusetts Institute of Technology",
+                "url": "https://news.mit.edu/2026/single-ai-model-simulates-many-substances-behavior-1109",
+                "source": "news.mit.edu",
+                "summary": "Unified simulation\n\nFor this work, the researchers drew inspiration from world models. These powerful AI systems learn the rules that govern the physical world so they can predict how objects or environments will change over time in response to certain actions or conditions.\n\nThe researchers applied these concepts to develop a unified AI architecture that can simulate multiple types of physical phenomena. [...] ## More MIT News\n\nRobot serving a cup of coffee while being instructed not to spill on the laptop\n\n### AI-assisted learning platform helps robots reason beyond literal commands\n\nThe new approach, known as FLEX, could lead to more intuitive, interactive household and assistive robots.\n\nRead full story →\n\nMan wearing a T-shirt and safety goggles standing above a concrete beam in the lab, operating a bench-mounted laser tool scanning the concrete. [...] The system represents every material it simulates, from a dune of sand to a protein molecule, as tiny particles and predicts where those particles will move one step at a time. Because it learns the underlying dynamics rather than being programmed with an equation, the model can adapt to materials, forces, and environments it never encountered during training.",
+                "score": 0.2975827
+              },
+              {
+                "title": "Authors Can Defend Against AI Allegations With ‘Paper Trail’ Tools. Is It Enough? | WIRED",
+                "url": "https://www.wired.com/story/authors-can-defend-against-ai-allegations-with-paper-trail-tools",
+                "source": "wired.com",
+                "summary": "But Bartz notes that once the accusations start, the damage is done. As the Shy Girl scandal erupted, she says, “I kind of immediately felt like this was going to lead to a potential witch hunt.” The unavoidable emergence of AI in publishing, she explains, will “have the unintended effect of leading anyone to be able to accuse anyone of using AI,” and at the moment, authors have little recourse in defending themselves against these charges. “There’s no agreed upon standard,” Bartz says, in [...] Mia Ballard, the author of Shy Girl, has denied allegations that she used AI to write the novel, claiming that an editor was responsible for AI-assisted changes to a previously self-published version of the book. She has also said that she is pursuing legal action. Since that scandal broke, several more fiction authors have run afoul of AI suspicions, one after winning a short story prize, another after publishers bid into the millions for his crime novel. Both have denied these allegations as [...] “If what you're selling are your words and your voice and your imagination, your creativity, using AI doesn't make sense,” Rasenberger says, noting that authors’ pride in their own work means AI slop is far less common in publishing than one might think. “I've talked to editors, particularly editors of literary nonfiction and fiction,” Rasenberger says, “and some of them will say, ‘I never see AI-generated submissions, I'd know it if I did.’”",
+                "score": 0.2249995
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

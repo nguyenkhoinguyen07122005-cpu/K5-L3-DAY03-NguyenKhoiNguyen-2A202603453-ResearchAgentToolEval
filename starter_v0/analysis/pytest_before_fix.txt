@@ -1,0 +1,355 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.10, pytest-9.2.0, pluggy-1.7.0 -- C:\Users\Thao\Downloads\K5-L3-DAY03-ResearchAgentToolEval-final\K5-L3-DAY03-LeSongThao-2A202603534-ResearchAgentToolEval-main\starter_v0\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\Thao\Downloads\K5-L3-DAY03-ResearchAgentToolEval-final\K5-L3-DAY03-LeSongThao-2A202603534-ResearchAgentToolEval-main\starter_v0
+configfile: pytest.ini
+testpaths: tests
+plugins: anyio-4.16.0
+collecting ... collected 89 items
+
+tests/test_tool_contract.py::test_tool_names_are_unique PASSED           [  1%]
+tests/test_tool_contract.py::test_every_declared_tool_has_implementation[clarify] PASSED [  2%]
+tests/test_tool_contract.py::test_every_declared_tool_has_implementation[fetch] PASSED [  3%]
+tests/test_tool_contract.py::test_every_declared_tool_has_implementation[format] PASSED [  4%]
+tests/test_tool_contract.py::test_every_declared_tool_has_implementation[lookup] PASSED [  5%]
+tests/test_tool_contract.py::test_every_declared_tool_has_implementation[paper_text] PASSED [  6%]
+tests/test_tool_contract.py::test_every_declared_tool_has_implementation[papers] PASSED [  7%]
+tests/test_tool_contract.py::test_every_declared_tool_has_implementation[policy] PASSED [  8%]
+tests/test_tool_contract.py::test_every_declared_tool_has_implementation[send] PASSED [ 10%]
+tests/test_tool_contract.py::test_every_declared_tool_has_implementation[social_search] PASSED [ 11%]
+tests/test_tool_contract.py::test_every_declared_tool_has_implementation[timeline] PASSED [ 12%]
+tests/test_tool_contract.py::test_declared_params_exist_in_function_signature[clarify] PASSED [ 13%]
+tests/test_tool_contract.py::test_declared_params_exist_in_function_signature[fetch] PASSED [ 14%]
+tests/test_tool_contract.py::test_declared_params_exist_in_function_signature[format] PASSED [ 15%]
+tests/test_tool_contract.py::test_declared_params_exist_in_function_signature[lookup] PASSED [ 16%]
+tests/test_tool_contract.py::test_declared_params_exist_in_function_signature[paper_text] PASSED [ 17%]
+tests/test_tool_contract.py::test_declared_params_exist_in_function_signature[papers] PASSED [ 19%]
+tests/test_tool_contract.py::test_declared_params_exist_in_function_signature[policy] PASSED [ 20%]
+tests/test_tool_contract.py::test_declared_params_exist_in_function_signature[send] PASSED [ 21%]
+tests/test_tool_contract.py::test_declared_params_exist_in_function_signature[social_search] PASSED [ 22%]
+tests/test_tool_contract.py::test_declared_params_exist_in_function_signature[timeline] PASSED [ 23%]
+tests/test_tool_contract.py::test_required_params_are_declared[clarify] PASSED [ 24%]
+tests/test_tool_contract.py::test_required_params_are_declared[fetch] PASSED [ 25%]
+tests/test_tool_contract.py::test_required_params_are_declared[format] PASSED [ 26%]
+tests/test_tool_contract.py::test_required_params_are_declared[lookup] PASSED [ 28%]
+tests/test_tool_contract.py::test_required_params_are_declared[paper_text] PASSED [ 29%]
+tests/test_tool_contract.py::test_required_params_are_declared[papers] PASSED [ 30%]
+tests/test_tool_contract.py::test_required_params_are_declared[policy] PASSED [ 31%]
+tests/test_tool_contract.py::test_required_params_are_declared[send] PASSED [ 32%]
+tests/test_tool_contract.py::test_required_params_are_declared[social_search] PASSED [ 33%]
+tests/test_tool_contract.py::test_required_params_are_declared[timeline] PASSED [ 34%]
+tests/test_tool_contract.py::test_description_is_not_empty[clarify] PASSED [ 35%]
+tests/test_tool_contract.py::test_description_is_not_empty[fetch] PASSED [ 37%]
+tests/test_tool_contract.py::test_description_is_not_empty[format] PASSED [ 38%]
+tests/test_tool_contract.py::test_description_is_not_empty[lookup] PASSED [ 39%]
+tests/test_tool_contract.py::test_description_is_not_empty[paper_text] PASSED [ 40%]
+tests/test_tool_contract.py::test_description_is_not_empty[papers] PASSED [ 41%]
+tests/test_tool_contract.py::test_description_is_not_empty[policy] PASSED [ 42%]
+tests/test_tool_contract.py::test_description_is_not_empty[send] PASSED  [ 43%]
+tests/test_tool_contract.py::test_description_is_not_empty[social_search] PASSED [ 44%]
+tests/test_tool_contract.py::test_description_is_not_empty[timeline] PASSED [ 46%]
+tests/test_tool_contract.py::test_openai_tool_schema_shape PASSED        [ 47%]
+tests/test_tool_contract.py::test_tool_folder_has_tool_md_with_matching_name[clarify] PASSED [ 48%]
+tests/test_tool_contract.py::test_tool_folder_has_tool_md_with_matching_name[fetch] PASSED [ 49%]
+tests/test_tool_contract.py::test_tool_folder_has_tool_md_with_matching_name[format] PASSED [ 50%]
+tests/test_tool_contract.py::test_tool_folder_has_tool_md_with_matching_name[lookup] PASSED [ 51%]
+tests/test_tool_contract.py::test_tool_folder_has_tool_md_with_matching_name[paper_text] PASSED [ 52%]
+tests/test_tool_contract.py::test_tool_folder_has_tool_md_with_matching_name[papers] PASSED [ 53%]
+tests/test_tool_contract.py::test_tool_folder_has_tool_md_with_matching_name[policy] PASSED [ 55%]
+tests/test_tool_contract.py::test_tool_folder_has_tool_md_with_matching_name[send] PASSED [ 56%]
+tests/test_tool_contract.py::test_tool_folder_has_tool_md_with_matching_name[social_search] PASSED [ 57%]
+tests/test_tool_contract.py::test_tool_folder_has_tool_md_with_matching_name[timeline] PASSED [ 58%]
+tests/test_tool_contract.py::test_eval_cases_only_expect_declared_tools[eval_base.json] PASSED [ 59%]
+tests/test_tool_contract.py::test_eval_cases_only_expect_declared_tools[eval_group.json] PASSED [ 60%]
+tests/test_tool_contract.py::test_eval_cases_only_expect_declared_tools[eval_research_extension.json] PASSED [ 61%]
+tests/test_tools_examples.py::test_format_brief_keeps_at_most_5_items_and_links_source PASSED [ 62%]
+tests/test_tools_examples.py::test_format_truncates_long_summary PASSED  [ 64%]
+tests/test_tools_examples.py::test_send_without_confirmation_does_not_call_network PASSED [ 65%]
+tests/test_tools_examples.py::test_lookup_sends_expected_request_and_maps_results PASSED [ 66%]
+tests/test_tools_examples.py::test_lookup_without_key_returns_error_dict PASSED [ 67%]
+tests/test_tools_examples.py::test_lookup_http_error_returns_error_dict PASSED [ 68%]
+tests/test_tools_examples.py::test_agent_executes_tool_and_survives_unknown_or_bad_calls PASSED [ 69%]
+tests/test_tools_todo.py::test_clarify_choice_returns_options_and_awaits_user PASSED [ 70%]
+tests/test_tools_todo.py::test_format_sections_groups_items_by_section PASSED [ 71%]
+tests/test_tools_todo.py::test_format_thread_numbers_items PASSED        [ 73%]
+tests/test_tools_todo.py::test_format_empty_items_does_not_crash PASSED  [ 74%]
+tests/test_tools_todo.py::test_send_confirmed_posts_to_telegram PASSED   [ 75%]
+tests/test_tools_todo.py::test_send_confirmed_without_env_returns_error_and_no_request PASSED [ 76%]
+tests/test_tools_todo.py::test_lookup_without_timeframe_omits_time_range PASSED [ 77%]
+tests/test_tools_todo.py::test_fetch_maps_firecrawl_response PASSED      [ 78%]
+tests/test_tools_todo.py::test_fetch_truncates_markdown_to_4000_chars PASSED [ 79%]
+tests/test_tools_todo.py::test_timeline_respects_limit_and_skips_items_without_id PASSED [ 80%]
+tests/test_tools_todo.py::test_social_search_passes_search_type PASSED   [ 82%]
+tests/test_tools_todo.py::test_policy_empty_query_returns_no_results PASSED [ 83%]
+tests/test_tools_todo.py::test_policy_area_filter_only_returns_that_area PASSED [ 84%]
+tests/test_tools_todo.py::test_policy_instruction_like_lines_go_to_untrusted_text PASSED [ 85%]
+tests/test_tools_todo.py::test_send_string_false_is_not_treated_as_confirmation FAILED [ 86%]
+tests/test_tools_todo.py::test_send_needs_confirmation_pauses_chat_loop FAILED [ 87%]
+tests/test_tools_todo.py::test_send_error_message_does_not_leak_bot_token FAILED [ 88%]
+tests/test_tools_todo.py::test_send_retries_without_markdown_when_telegram_rejects_entities FAILED [ 89%]
+tests/test_tools_todo.py::test_timeline_strips_at_sign_from_handle FAILED [ 91%]
+tests/test_tools_todo.py::test_timeline_limit_edge_values FAILED         [ 92%]
+tests/test_tools_todo.py::test_social_search_normalises_search_type_case FAILED [ 93%]
+tests/test_tools_todo.py::test_lookup_clamps_max_results_and_normalises_enums FAILED [ 94%]
+tests/test_tools_todo.py::test_fetch_empty_url_does_not_spend_credit FAILED [ 95%]
+tests/test_tools_todo.py::test_fetch_adds_scheme_to_bare_domain FAILED   [ 96%]
+tests/test_tools_todo.py::test_format_accepts_plain_string_items_without_crashing FAILED [ 97%]
+tests/test_tools_todo.py::test_format_item_without_url_has_no_dangling_separator FAILED [ 98%]
+tests/test_tools_todo.py::test_clarify_unknown_response_type_falls_back_to_text FAILED [100%]
+
+================================== FAILURES ===================================
+____________ test_send_string_false_is_not_treated_as_confirmation ____________
+
+telegram_env = None
+fake_http = <function fake_http.<locals>._install at 0x0000022A23008B80>
+
+    def test_send_string_false_is_not_treated_as_confirmation(telegram_env, fake_http) -> None:
+        """BUG-1: model sent confirmed="false" (a non-empty string -> truthy) and the message WAS posted."""
+        calls = fake_http(FakeResponse({"ok": True}))
+        for value in ("false", "False", "no", 0, None, "yes please?"):
+            result = send(text="B\u1ea3n tin", confirmed=value)
+>           assert result["status"] == "needs_confirmation", value
+E           AssertionError: false
+E           assert 'sent' == 'needs_confirmation'
+E             
+E             - needs_confirmation
+E             + sent
+
+tests\test_tools_todo.py:209: AssertionError
+________________ test_send_needs_confirmation_pauses_chat_loop ________________
+
+fake_http = <function fake_http.<locals>._install at 0x0000022A23008180>
+
+    def test_send_needs_confirmation_pauses_chat_loop(fake_http) -> None:
+        """BUG-1b: needs_confirmation was not flagged awaiting_user, so chat.py kept looping."""
+        fake_http(FakeResponse({"ok": True}))
+        result = send(text="B\u1ea3n tin", confirmed=False)
+>       assert result["awaiting_user"] is True
+               ^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'awaiting_user'
+
+tests\test_tools_todo.py:217: KeyError
+_______________ test_send_error_message_does_not_leak_bot_token _______________
+
+telegram_env = None
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000022A22D9BFB0>
+
+    def test_send_error_message_does_not_leak_bot_token(telegram_env, monkeypatch) -> None:
+        """BUG-2: requests' HTTPError text contains the full URL -> bot token ended up in transcripts."""
+        import requests
+    
+        class LeakyResponse(FakeResponse):
+            def raise_for_status(self) -> None:
+                raise requests.HTTPError("401 Client Error: Unauthorized for url: https://api.telegram.org/bot123456:SECRET-TOKEN/sendMessage")
+    
+        monkeypatch.setattr(requests, "post", lambda url, **kw: LeakyResponse(status_code=401))
+        result = send(text="x", confirmed=True)
+        assert result["error"] == "HTTPError"
+>       assert "SECRET-TOKEN" not in str(result)
+E       assert 'SECRET-TOKEN' not in "{'tool': 's...endMessage'}"
+E         
+E         'SECRET-TOKEN' is contained here:
+E           {'tool': 'send_telegram', 'error': 'HTTPError', 'message': '401 Client Error: Unauthorized for url: https://api.telegram.org/bot123456:SECRET-TOKEN/sendMessage'}
+E         ?                                                                                                                                        ++++++++++++
+
+tests\test_tools_todo.py:232: AssertionError
+______ test_send_retries_without_markdown_when_telegram_rejects_entities ______
+
+telegram_env = None
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000022A22DB6810>
+
+    def test_send_retries_without_markdown_when_telegram_rejects_entities(telegram_env, monkeypatch) -> None:
+        """BUG-3: digest text with unbalanced '*'/'_' -> Telegram 400 'can't parse entities' -> nothing sent."""
+        import requests
+    
+        posted: list[dict] = []
+    
+        def fake_post(url, **kwargs):
+            posted.append(kwargs["json"])
+            return FakeResponse(status_code=400 if "parse_mode" in kwargs["json"] else 200)
+    
+        monkeypatch.setattr(requests, "post", fake_post)
+        result = send(text="**AI_news* digest", confirmed=True)
+>       assert result["status"] == "sent"
+               ^^^^^^^^^^^^^^^^
+E       KeyError: 'status'
+
+tests\test_tools_todo.py:247: KeyError
+__________________ test_timeline_strips_at_sign_from_handle ___________________
+
+twitter_env = None
+fake_http = <function fake_http.<locals>._install at 0x0000022A2300A340>
+
+    def test_timeline_strips_at_sign_from_handle(twitter_env, fake_http) -> None:
+        """BUG-4: model passed '@sama' -> API looked up a non-existent account '@sama'."""
+        calls = fake_http(FakeResponse({"timeline": _tweets(1)}))
+        result = timeline(screenname=" @sama ")
+>       assert calls[0]["params"] == {"screenname": "sama"}
+E       AssertionError: assert {'screenname': ' @sama '} == {'screenname': 'sama'}
+E         
+E         Differing items:
+E         {'screenname': ' @sama '} != {'screenname': 'sama'}
+E         
+E         Full diff: (-: missing in left side, +: extra in left side)
+E           {
+E         -     'screenname': 'sama',...
+E         
+E         ...Full output truncated, use '-vv' to show
+
+tests\test_tools_todo.py:255: AssertionError
+_______________________ test_timeline_limit_edge_values _______________________
+
+twitter_env = None
+fake_http = <function fake_http.<locals>._install at 0x0000022A2300A480>
+
+    def test_timeline_limit_edge_values(twitter_env, fake_http) -> None:
+        """BUG-5: limit=-1 silently dropped the LAST tweet (items[:-1]); limit=0 returned 5."""
+        fake_http(FakeResponse({"timeline": _tweets(6)}))
+>       assert len(timeline(screenname="sama", limit=-1)["items"]) == 1
+E       AssertionError: assert 5 == 1
+E        +  where 5 = len([{'title': 'tweet 1', 'summary': 'tweet 1\nbody', 'url': 'https://x.com/sama/status/1', 'source': '@sama', ...}, {'title': 'tweet 2', 'summary': 'tweet 2\nbody', 'url': 'https://x.com/sama/status/2', 'source': '@sama', ...}, {'title': 'tweet 3', 'summary': 'tweet 3\nbody', 'url': 'https://x.com/sama/status/3', 'source': '@sama', ...}, {'title': 'tweet 4', 'summary': 'tweet 4\nbody', 'url': 'https://x.com/sama/status/4', 'source': '@sama', ...}, {'title': 'tweet 5', 'summary': 'tweet 5\nbody', 'url': 'https://x.com/sama/status/5', 'source': '@sama', ...}])
+
+tests\test_tools_todo.py:262: AssertionError
+_______________ test_social_search_normalises_search_type_case ________________
+
+twitter_env = None
+fake_http = <function fake_http.<locals>._install at 0x0000022A230099E0>
+
+    def test_social_search_normalises_search_type_case(twitter_env, fake_http) -> None:
+        """BUG-6: model sent search_type='top' (lowercase) -> API expects 'Top'."""
+        calls = fake_http(FakeResponse({"timeline": []}))
+        social_search(query="AI", search_type="top")
+        social_search(query="AI", search_type="whatever")
+>       assert [call["params"]["search_type"] for call in calls] == ["Top", "Latest"]
+E       AssertionError: assert ['top', 'whatever'] == ['Top', 'Latest']
+E         
+E         At index 0 diff: 'top' != 'Top'
+E         
+E         Full diff: (-: missing in left side, +: extra in left side)
+E           [
+E         -     'Top',
+E         ?      ^...
+E         
+E         ...Full output truncated, use '-vv' to show
+
+tests\test_tools_todo.py:273: AssertionError
+_____________ test_lookup_clamps_max_results_and_normalises_enums _____________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000022A22DB4650>
+fake_http = <function fake_http.<locals>._install at 0x0000022A23009120>
+
+    def test_lookup_clamps_max_results_and_normalises_enums(monkeypatch, fake_http) -> None:
+        """BUG-7: max_results=50 / timeframe='today' / topic='News' were forwarded and rejected by Tavily."""
+        monkeypatch.setenv("TAVILY_API_KEY", "tv-test")
+        calls = fake_http(FakeResponse({"results": []}))
+        lookup(query="AI", topic="News", timeframe="today", max_results=50)
+        body = calls[0]["json"]
+>       assert body["max_results"] == 20
+E       assert 50 == 20
+
+tests\test_tools_todo.py:282: AssertionError
+_________________ test_fetch_empty_url_does_not_spend_credit __________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000022A22DC7950>
+fake_http = <function fake_http.<locals>._install at 0x0000022A2300ACA0>
+
+    def test_fetch_empty_url_does_not_spend_credit(monkeypatch, fake_http) -> None:
+        """BUG-8: fetch(url='') still called Firecrawl (paid credit) and returned a confusing 400."""
+        monkeypatch.setenv("FIRECRAWL_API_KEY", "fc-test")
+        calls = fake_http(FakeResponse({"data": {}}))
+        result = fetch(url="  ")
+>       assert calls == []
+E       AssertionError: assert [{'method': '...-test'}, ...}] == []
+E         
+E         Left contains one more item: {'method': 'POST', 'url': 'https://api.firecrawl.dev/v1/scrape', 'json': {'url': '  ', 'formats': ['markdown']}, 'headers': {'Authorization': 'Bearer fc-test'}, ...}
+E         
+E         Full diff: (-: missing in left side, +: extra in left side)
+E         - []
+E         + [
+E         +     {...
+E         
+E         ...Full output truncated, use '-vv' to show
+
+tests\test_tools_todo.py:297: AssertionError
+____________________ test_fetch_adds_scheme_to_bare_domain ____________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000022A22DC49E0>
+fake_http = <function fake_http.<locals>._install at 0x0000022A2300AE80>
+
+    def test_fetch_adds_scheme_to_bare_domain(monkeypatch, fake_http) -> None:
+        """BUG-9: 'openai.com/research' (no scheme) was rejected by Firecrawl."""
+        monkeypatch.setenv("FIRECRAWL_API_KEY", "fc-test")
+        calls = fake_http(FakeResponse({"data": {"markdown": "ok", "metadata": {}}}))
+        result = fetch(url="openai.com/research")
+>       assert calls[0]["json"]["url"] == "https://openai.com/research"
+E       AssertionError: assert 'openai.com/research' == 'https://openai.com/research'
+E         
+E         - https://openai.com/research
+E         ? --------
+E         + openai.com/research
+
+tests\test_tools_todo.py:306: AssertionError
+___________ test_format_accepts_plain_string_items_without_crashing ___________
+
+    def test_format_accepts_plain_string_items_without_crashing() -> None:
+        """BUG-10: model sent items=["headline 1", "headline 2"] -> AttributeError crashed the tool."""
+>       result = format_tool(items=["headline 1", "headline 2"], template="bullets")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_tools_todo.py:312: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tools\format\tool.py:26: in render_digest
+    markdown = "\n".join(_bullet(item) for item in items)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tools\format\tool.py:26: in <genexpr>
+    markdown = "\n".join(_bullet(item) for item in items)
+                         ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+item = 'headline 1'
+
+    def _bullet(item: dict[str, Any]) -> str:
+>       text = (item.get("summary") or item.get("title") or "").strip().replace("\n", " ")
+                ^^^^^^^^
+E       AttributeError: 'str' object has no attribute 'get'
+
+tools\format\tool.py:15: AttributeError
+___________ test_format_item_without_url_has_no_dangling_separator ____________
+
+    def test_format_item_without_url_has_no_dangling_separator() -> None:
+        """BUG-11: an item without url/source rendered as '- text - ' (dangling dash)."""
+        markdown = format_tool(items=[{"title": "No link"}], template="bullets")["markdown"]
+>       assert markdown == "- No link"
+E       AssertionError: assert '- No link - ' == '- No link'
+E         
+E         - - No link
+E         + - No link - 
+E         ?          +++
+
+tests\test_tools_todo.py:320: AssertionError
+____________ test_clarify_unknown_response_type_falls_back_to_text ____________
+
+    def test_clarify_unknown_response_type_falls_back_to_text() -> None:
+        """BUG-12: response_type='free' passed through, UI could not render the question."""
+>       assert clarify(question="T\xe0i kho\u1ea3n n\xe0o?", response_type="free")["response_type"] == "text"
+E       AssertionError: assert 'free' == 'text'
+E         
+E         - text
+E         + free
+
+tests\test_tools_todo.py:325: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_tools_todo.py::test_send_string_false_is_not_treated_as_confirmation
+FAILED tests/test_tools_todo.py::test_send_needs_confirmation_pauses_chat_loop
+FAILED tests/test_tools_todo.py::test_send_error_message_does_not_leak_bot_token
+FAILED tests/test_tools_todo.py::test_send_retries_without_markdown_when_telegram_rejects_entities
+FAILED tests/test_tools_todo.py::test_timeline_strips_at_sign_from_handle - A...
+FAILED tests/test_tools_todo.py::test_timeline_limit_edge_values - AssertionE...
+FAILED tests/test_tools_todo.py::test_social_search_normalises_search_type_case
+FAILED tests/test_tools_todo.py::test_lookup_clamps_max_results_and_normalises_enums
+FAILED tests/test_tools_todo.py::test_fetch_empty_url_does_not_spend_credit
+FAILED tests/test_tools_todo.py::test_fetch_adds_scheme_to_bare_domain - Asse...
+FAILED tests/test_tools_todo.py::test_format_accepts_plain_string_items_without_crashing
+FAILED tests/test_tools_todo.py::test_format_item_without_url_has_no_dangling_separator
+FAILED tests/test_tools_todo.py::test_clarify_unknown_response_type_falls_back_to_text
+======================== 13 failed, 76 passed in 0.58s ========================

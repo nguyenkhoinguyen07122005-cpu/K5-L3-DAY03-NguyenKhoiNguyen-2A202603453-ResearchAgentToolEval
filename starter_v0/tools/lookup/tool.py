@@ -5,7 +5,15 @@ from typing import Any
 
 import requests
 
-from tools._shared import TIMEOUT, domain, err
+from tools._shared import TIMEOUT, clamp_int, domain, err
+
+
+TIMEFRAME_ALIASES = {
+    "day": "day", "d": "day", "today": "day", "24h": "day",
+    "week": "week", "w": "week", "7d": "week",
+    "month": "month", "m": "month", "30d": "month",
+    "year": "year", "y": "year",
+}
 
 
 def web_search(query: str = "", topic: str = "general", timeframe: str | None = "week", max_results: int = 5) -> dict[str, Any]:
@@ -13,7 +21,10 @@ def web_search(query: str = "", topic: str = "general", timeframe: str | None = 
         key = os.getenv("TAVILY_API_KEY")
         if not key:
             raise RuntimeError("Missing TAVILY_API_KEY env var")
-        body: dict[str, Any] = {"query": query, "topic": topic, "max_results": int(max_results or 5), "search_depth": "basic"}
+        # Fix for BUG-7: normalise enums and clamp max_results (Tavily accepts 0-20).
+        topic = "news" if str(topic or "").strip().lower() == "news" else "general"
+        timeframe = TIMEFRAME_ALIASES.get(str(timeframe).strip().lower()) if timeframe else None
+        body: dict[str, Any] = {"query": query, "topic": topic, "max_results": clamp_int(max_results, 5, 1, 20), "search_depth": "basic"}
         if timeframe:
             body["time_range"] = timeframe
         response = requests.post(

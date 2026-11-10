@@ -4,6 +4,10 @@ from typing import Any
 
 
 def ask_user(question: str = "", response_type: str = "text", options: list[str] | None = None) -> dict[str, Any]:
+    # Fix for BUG-12: unknown response types fall back to free text; yes/no gets explicit options.
+    response_type = response_type if response_type in {"text", "yes_no", "choice"} else "text"
+    if response_type == "yes_no" and not options:
+        options = ["yes", "no"]
     return {
         "tool": "ask_user",
         "question": question,

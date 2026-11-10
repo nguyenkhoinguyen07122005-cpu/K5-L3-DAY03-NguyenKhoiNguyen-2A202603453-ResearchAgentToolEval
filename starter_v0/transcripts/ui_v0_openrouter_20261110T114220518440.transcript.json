@@ -1,0 +1,557 @@
+{
+  "transcript_id": "ui_v0_openrouter_20261110T114220518440",
+  "version": "v0",
+  "artifact_version": "v0+pac4559930cd5+t89aedeb37a5d",
+  "prompt_hash": "ac4559930cd568bb5c3abc4bb1af5d7107d74e2bb5e3fdd10a39058cc45b89c9",
+  "tools_hash": "89aedeb37a5d5c36249c1658e129cef9428df5dbddb1eeaa72b5ea10f9750790",
+  "provider": "openrouter",
+  "model": null,
+  "system_prompt": "artifacts\\system_prompt.md",
+  "tools": "artifacts\\tools.yaml",
+  "history_window": 5,
+  "max_tool_rounds": 4,
+  "source": "streamlit_ui",
+  "created_at": "2026-11-10T11:42:20",
+  "updated_at": "2026-11-10T11:43:02",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-11-10T11:42:22",
+      "user": "Tin tức AI hôm nay có gì nổi bật?",
+      "status": "answered",
+      "assistant_text": "Here are some notable AI news highlights from today:\n\n1. **Recent Advances in AI Are Creating a ‘Paradigm Shift’ for Robotics**  \n   Researchers at UC Berkeley discuss how AI agents are reshaping robotics by developing robot-control programs and refining them through simulations. OpenAI's Astra model has significantly enhanced this process. [Read more](https://vcresearch.berkeley.edu/news/recent-advances-ai-are-creating-paradigm-shift-robotics).\n\n2. **Meta Introduces Muse Ember to Power Cost-Efficient AI Agents**  \n   Meta has launched Muse Ember, aimed at enhancing the efficiency of AI agents. This development comes alongside other advancements in AI models by companies like Anthropic. [Read more](https://siliconangle.com/2026/11/09/meta-introduces-muse-ember-to-power-cost-efficient-ai-agents).\n\n3. **Live Online Certificate Brings AI Expertise to Finance Professionals**  \n   Cornell University is offering a live online certificate program focused on AI applications in finance, covering topics from AI foundations to industry applications. [Read more](https://news.cornell.edu/stories/2026/11/live-online-certificate-brings-ai-expertise-finance-professionals).\n\n4. **Google AI Policy Forces Decision for San Diego Schools**  \n   San Diego schools face a deadline to decide on Google's AI features, which could impact students' access to technology. The decision weighs the benefits of AI against concerns about its use in education. [Read more](https://www.nbcsandiego.com/news/local/googles-ai-ultimatum-forces-san-diego-schools-make-tough-choice/4099437).\n\n5. **Military-Made AI Tool Helped Thwart World Cup Bomb Threat**  \n   An AI tool developed by the military played a crucial role in preventing a bomb threat during the FIFA World Cup, showcasing the technology's application in security. [Read more](https://federalnewsnetwork.com/artificial-intelligence/2026/11/military-made-ai-tool-helped-thwart-world-cup-bomb-threat).\n\nIf you need more details on any of these topics, feel free to ask!",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "lookup",
+              "args": {
+                "query": "AI",
+                "topic": "news",
+                "timeframe": "day",
+                "max_results": 5
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "lookup",
+              "args": {
+                "query": "AI",
+                "topic": "news",
+                "timeframe": "day",
+                "max_results": 5
+              },
+              "result": {
+                "tool": "web_search",
+                "query": "AI",
+                "topic": "news",
+                "timeframe": "day",
+                "items": [
+                  {
+                    "title": "Recent Advances in AI Are Creating a ‘Paradigm Shift’ for Robotics | Research UC Berkeley",
+                    "url": "https://vcresearch.berkeley.edu/news/recent-advances-ai-are-creating-paradigm-shift-robotics",
+                    "source": "vcresearch.berkeley.edu",
+                    "summary": "In recent months, artificial intelligence agents that can reason, plan and use external tools to accomplish multistep tasks have already reshaped computer coding, online shopping, dinner reservations and cyberattacks.\n\nRobotics might be next.\n\nKen Goldberg, a UC Berkeley roboticist and professor of engineering, said new models make it possible for teams of AI agents to develop robot-control programs, test them in simulated environments and revise the code when something doesn’t work. [...] Then, AI agents generate and connect these skills into a robot program. Using NVIDIA’s Isaac simulation libraries, the agents autonomously rehearse the program across task variations, identify where failures happen and refine the approach before deployment. [...] OpenAI’s recent release of its Astra model made the process even more promising, Goldberg said. His postdoctoral students Eric Kaiyuan Chen and Shuangyu Xie gave Astra access to their simulation interface and a short video of a real robot whose assignment was using a sponge to wipe ink off a metal bar. In less than an hour, the AI tool created and fine-tuned a physics simulation that accurately reproduced the video, including very realistic deformations of the sponge.",
+                    "score": 0.29827207
+                  },
+                  {
+                    "title": "Meta introduces Muse Ember to power cost-efficient AI agents - SiliconANGLE",
+                    "url": "https://siliconangle.com/2026/11/09/meta-introduces-muse-ember-to-power-cost-efficient-ai-agents",
+                    "source": "siliconangle.com",
+                    "summary": "Anthropic launches Fable 5.2 and Mythos 5.2 with science, coding upgrades\n\n  AI - BY MARIA DEUTSCHER . 2 HOURS AGO\n Trump stands by Nvidia boss Jensen Huang despite spy scandal, but FBI is investigating\n\n  POLICY - BY MIKE WHEATLEY . 2 HOURS AGO\n Alphabet’s Wing to invest $125M in new delivery drone factory\n\n  EMERGING TECH - BY MARIA DEUTSCHER . 4 HOURS AGO\n Cisco research: Trust, not technology, is now the speed limit on enterprise AI [...] Anthropic launches Fable 5.2 and Mythos 5.2 with science, coding upgrades\n Trump stands by Nvidia boss Jensen Huang despite spy scandal, but FBI is investigating\n IBM builds on hybrid cloud and governance to advance its enterprise AI operating model\n Alphabet’s Wing to invest $125M in new delivery drone factory\n Cisco research: Trust, not technology, is now the speed limit on enterprise AI\n On theCUBE Pod: Blue wave sends AI stock plunging\n\n##### LATEST STORIES [...] One possibility is that the company used it to perform post-training, the task of honing a model’s capabilities by training it on additional data. Thinking Machines Labs Inc. recently demonstrated that even a relatively small LLM can run post-training runs end-to-end. Anthropic PBC, for its part, last week revealed that its AI models could soon gain the ability to significantly accelerate machine learning research.",
+                    "score": 0.26130545
+                  },
+                  {
+                    "title": "Live online certificate brings AI expertise to finance professionals | Cornell Chronicle",
+                    "url": "https://news.cornell.edu/stories/2026/11/live-online-certificate-brings-ai-expertise-finance-professionals",
+                    "source": "news.cornell.edu",
+                    "summary": "That philosophy is reflected in the curriculum, which progresses from AI foundations and tools to financial use cases, responsible AI, industry applications and leadership. Participants examine applications including investment research, credit risk, fraud detection, compliance, client engagement and operational efficiency, while also considering issues such as hallucinations, data security, regulation and governance. The program concludes by asking participants to identify opportunities for AI [...] The AI in Finance certificate, offered through eCornell as a collaboration between the Cornell Duffield College of Engineering and the Cornell SC Johnson College of Business, debuted in spring 2026 with 37 participants. Unlike many online certificate programs built primarily around prerecorded material, the program is taught live online, allowing participants to interact directly with Cornell faculty and industry practitioners. [...] Averbukh, who is also a professor of practice in the School of Operations Research and Information Engineering, said conversations with those practitioners increasingly turned toward artificial intelligence – first big data and predictive analytics, then machine learning and, more recently, generative and agentic AI.",
+                    "score": 0.22764139
+                  },
+                  {
+                    "title": "Google AI policy forces decision for San Diego schools – NBC 7 San Diego",
+                    "url": "https://www.nbcsandiego.com/news/local/googles-ai-ultimatum-forces-san-diego-schools-make-tough-choice/4099437",
+                    "source": "nbcsandiego.com",
+                    "summary": "As districts consider their options, students are already seeing artificial intelligence become a more common part of everyday learning.\n\n“I feel like I see a lot of people using AI now,” said Delilah Ortiz, a student at El Camino High School.\n\nSome students believe the focus should be on establishing guidelines for AI use rather than banning the technology entirely. [...] San Diego County school districts face a January deadline to decide whether to opt in to Google's artificial intelligence features or lose access to the company's search engine, forcing educators to weigh the benefits of AI against concerns about student access to the technology. [...] Google plans to disable a range of AI-powered features, including Gemini, Gemini Notebook and Search in January to give school districts more control over the technology students can access. However, districts that want to continue using Google Search will have to opt in to the AI features.\n\nStream San Diego News for free, 24/7, wherever you are with NBC 7.\n\nWatch button  WATCH HERE",
+                    "score": 0.202917
+                  },
+                  {
+                    "title": "Military-made AI tool helped thwart World Cup bomb threat - Federal News Network",
+                    "url": "https://federalnewsnetwork.com/artificial-intelligence/2026/11/military-made-ai-tool-helped-thwart-world-cup-bomb-threat",
+                    "source": "federalnewsnetwork.com",
+                    "summary": "The 2026 World Cup brought more than six million spectators from around the world to more than 100 matches in 16 host cities in the U.S., Canada and Mexico over the course of two months, prompting a massive interagency effort to secure those sites using technologies like AI and drones. Two people were charged in connection with another bomb threat against FIFA during a World Cup match at MetLife Stadium in New Jersey. [...] A military-made artificial intelligence tool helped law enforcement thwart a bomb threat at the FIFA World Cup in California this summer.\n\nThe previously undisclosed incident occurred June 18, when Switzerland faced Bosnia and Herzegovina at SoFi Stadium outside Los Angeles, Army Capt. Ryan Hetrick, who leads the Pentagon’s Generative AI Task Force, said Nov. 6 at an AI event in Washington. [...] Hetrick has become one of the military’s biggest — and busiest — evangelists for AI. The GenAI Task Force travels around the globe to sit down with troops on operations floors and in the field and find AI fixes for their most pressing problems.",
+                    "score": 0.19305643
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Here are some notable AI news highlights from today:\n\n1. **Recent Advances in AI Are Creating a ‘Paradigm Shift’ for Robotics**  \n   Researchers at UC Berkeley discuss how AI agents are reshaping robotics by developing robot-control programs and refining them through simulations. OpenAI's Astra model has significantly enhanced this process. [Read more](https://vcresearch.berkeley.edu/news/recent-advances-ai-are-creating-paradigm-shift-robotics).\n\n2. **Meta Introduces Muse Ember to Power Cost-Efficient AI Agents**  \n   Meta has launched Muse Ember, aimed at enhancing the efficiency of AI agents. This development comes alongside other advancements in AI models by companies like Anthropic. [Read more](https://siliconangle.com/2026/11/09/meta-introduces-muse-ember-to-power-cost-efficient-ai-agents).\n\n3. **Live Online Certificate Brings AI Expertise to Finance Professionals**  \n   Cornell University is offering a live online certificate program focused on AI applications in finance, covering topics from AI foundations to industry applications. [Read more](https://news.cornell.edu/stories/2026/11/live-online-certificate-brings-ai-expertise-finance-professionals).\n\n4. **Google AI Policy Forces Decision for San Diego Schools**  \n   San Diego schools face a deadline to decide on Google's AI features, which could impact students' access to technology. The decision weighs the benefits of AI against concerns about its use in education. [Read more](https://www.nbcsandiego.com/news/local/googles-ai-ultimatum-forces-san-diego-schools-make-tough-choice/4099437).\n\n5. **Military-Made AI Tool Helped Thwart World Cup Bomb Threat**  \n   An AI tool developed by the military played a crucial role in preventing a bomb threat during the FIFA World Cup, showcasing the technology's application in security. [Read more](https://federalnewsnetwork.com/artificial-intelligence/2026/11/military-made-ai-tool-helped-thwart-world-cup-bomb-threat).\n\nIf you need more details on any of these topics, feel free to ask!",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "lookup",
+          "args": {
+            "query": "AI",
+            "topic": "news",
+            "timeframe": "day",
+            "max_results": 5
+          },
+          "result": {
+            "tool": "web_search",
+            "query": "AI",
+            "topic": "news",
+            "timeframe": "day",
+            "items": [
+              {
+                "title": "Recent Advances in AI Are Creating a ‘Paradigm Shift’ for Robotics | Research UC Berkeley",
+                "url": "https://vcresearch.berkeley.edu/news/recent-advances-ai-are-creating-paradigm-shift-robotics",
+                "source": "vcresearch.berkeley.edu",
+                "summary": "In recent months, artificial intelligence agents that can reason, plan and use external tools to accomplish multistep tasks have already reshaped computer coding, online shopping, dinner reservations and cyberattacks.\n\nRobotics might be next.\n\nKen Goldberg, a UC Berkeley roboticist and professor of engineering, said new models make it possible for teams of AI agents to develop robot-control programs, test them in simulated environments and revise the code when something doesn’t work. [...] Then, AI agents generate and connect these skills into a robot program. Using NVIDIA’s Isaac simulation libraries, the agents autonomously rehearse the program across task variations, identify where failures happen and refine the approach before deployment. [...] OpenAI’s recent release of its Astra model made the process even more promising, Goldberg said. His postdoctoral students Eric Kaiyuan Chen and Shuangyu Xie gave Astra access to their simulation interface and a short video of a real robot whose assignment was using a sponge to wipe ink off a metal bar. In less than an hour, the AI tool created and fine-tuned a physics simulation that accurately reproduced the video, including very realistic deformations of the sponge.",
+                "score": 0.29827207
+              },
+              {
+                "title": "Meta introduces Muse Ember to power cost-efficient AI agents - SiliconANGLE",
+                "url": "https://siliconangle.com/2026/11/09/meta-introduces-muse-ember-to-power-cost-efficient-ai-agents",
+                "source": "siliconangle.com",
+                "summary": "Anthropic launches Fable 5.2 and Mythos 5.2 with science, coding upgrades\n\n  AI - BY MARIA DEUTSCHER . 2 HOURS AGO\n Trump stands by Nvidia boss Jensen Huang despite spy scandal, but FBI is investigating\n\n  POLICY - BY MIKE WHEATLEY . 2 HOURS AGO\n Alphabet’s Wing to invest $125M in new delivery drone factory\n\n  EMERGING TECH - BY MARIA DEUTSCHER . 4 HOURS AGO\n Cisco research: Trust, not technology, is now the speed limit on enterprise AI [...] Anthropic launches Fable 5.2 and Mythos 5.2 with science, coding upgrades\n Trump stands by Nvidia boss Jensen Huang despite spy scandal, but FBI is investigating\n IBM builds on hybrid cloud and governance to advance its enterprise AI operating model\n Alphabet’s Wing to invest $125M in new delivery drone factory\n Cisco research: Trust, not technology, is now the speed limit on enterprise AI\n On theCUBE Pod: Blue wave sends AI stock plunging\n\n##### LATEST STORIES [...] One possibility is that the company used it to perform post-training, the task of honing a model’s capabilities by training it on additional data. Thinking Machines Labs Inc. recently demonstrated that even a relatively small LLM can run post-training runs end-to-end. Anthropic PBC, for its part, last week revealed that its AI models could soon gain the ability to significantly accelerate machine learning research.",
+                "score": 0.26130545
+              },
+              {
+                "title": "Live online certificate brings AI expertise to finance professionals | Cornell Chronicle",
+                "url": "https://news.cornell.edu/stories/2026/11/live-online-certificate-brings-ai-expertise-finance-professionals",
+                "source": "news.cornell.edu",
+                "summary": "That philosophy is reflected in the curriculum, which progresses from AI foundations and tools to financial use cases, responsible AI, industry applications and leadership. Participants examine applications including investment research, credit risk, fraud detection, compliance, client engagement and operational efficiency, while also considering issues such as hallucinations, data security, regulation and governance. The program concludes by asking participants to identify opportunities for AI [...] The AI in Finance certificate, offered through eCornell as a collaboration between the Cornell Duffield College of Engineering and the Cornell SC Johnson College of Business, debuted in spring 2026 with 37 participants. Unlike many online certificate programs built primarily around prerecorded material, the program is taught live online, allowing participants to interact directly with Cornell faculty and industry practitioners. [...] Averbukh, who is also a professor of practice in the School of Operations Research and Information Engineering, said conversations with those practitioners increasingly turned toward artificial intelligence – first big data and predictive analytics, then machine learning and, more recently, generative and agentic AI.",
+                "score": 0.22764139
+              },
+              {
+                "title": "Google AI policy forces decision for San Diego schools – NBC 7 San Diego",
+                "url": "https://www.nbcsandiego.com/news/local/googles-ai-ultimatum-forces-san-diego-schools-make-tough-choice/4099437",
+                "source": "nbcsandiego.com",
+                "summary": "As districts consider their options, students are already seeing artificial intelligence become a more common part of everyday learning.\n\n“I feel like I see a lot of people using AI now,” said Delilah Ortiz, a student at El Camino High School.\n\nSome students believe the focus should be on establishing guidelines for AI use rather than banning the technology entirely. [...] San Diego County school districts face a January deadline to decide whether to opt in to Google's artificial intelligence features or lose access to the company's search engine, forcing educators to weigh the benefits of AI against concerns about student access to the technology. [...] Google plans to disable a range of AI-powered features, including Gemini, Gemini Notebook and Search in January to give school districts more control over the technology students can access. However, districts that want to continue using Google Search will have to opt in to the AI features.\n\nStream San Diego News for free, 24/7, wherever you are with NBC 7.\n\nWatch button  WATCH HERE",
+                "score": 0.202917
+              },
+              {
+                "title": "Military-made AI tool helped thwart World Cup bomb threat - Federal News Network",
+                "url": "https://federalnewsnetwork.com/artificial-intelligence/2026/11/military-made-ai-tool-helped-thwart-world-cup-bomb-threat",
+                "source": "federalnewsnetwork.com",
+                "summary": "The 2026 World Cup brought more than six million spectators from around the world to more than 100 matches in 16 host cities in the U.S., Canada and Mexico over the course of two months, prompting a massive interagency effort to secure those sites using technologies like AI and drones. Two people were charged in connection with another bomb threat against FIFA during a World Cup match at MetLife Stadium in New Jersey. [...] A military-made artificial intelligence tool helped law enforcement thwart a bomb threat at the FIFA World Cup in California this summer.\n\nThe previously undisclosed incident occurred June 18, when Switzerland faced Bosnia and Herzegovina at SoFi Stadium outside Los Angeles, Army Capt. Ryan Hetrick, who leads the Pentagon’s Generative AI Task Force, said Nov. 6 at an AI event in Washington. [...] Hetrick has become one of the military’s biggest — and busiest — evangelists for AI. The GenAI Task Force travels around the globe to sit down with troops on operations floors and in the field and find AI fixes for their most pressing problems.",
+                "score": 0.19305643
+              }
+            ]
+          }
+        }
+      ],
+      "ended_at": "2026-11-10T11:42:32"
+    },
+    {
+      "turn_index": 2,
+      "started_at": "2026-11-10T11:42:44",
+      "user": "cho tôi một vài lý thuyết về ML đi",
+      "status": "answered",
+      "assistant_text": "Here are some theories and concepts related to machine learning (ML):\n\n### Research Papers on Machine Learning Theories\n\n1. **[Generalizing Machine Learning Evaluation through the Integration of Shannon Entropy and Rough Set Theory](http://arxiv.org/abs/2404.12511v1)**  \n   This paper explores the integration of Shannon entropy and rough set theory to enhance the evaluation of machine learning models. It proposes a framework that combines the granularity of rough set theory with the uncertainty quantification of Shannon entropy, providing insights into data complexity and model robustness.  \n   - Authors: Olga Cherednichenko, Dmytro Chernyshov, Dmytro Sytnikov, Polina Sytnikova  \n   - [PDF Link](https://arxiv.org/pdf/2404.12511v1)\n\n2. **[Emotion in Reinforcement Learning Agents and Robots: A Survey](http://arxiv.org/abs/1705.05172v1)**  \n   This survey discusses computational models of emotion in reinforcement learning agents, focusing on how emotions influence decision-making and learning efficiency. It provides insights into the integration of emotion theory with reinforcement learning.  \n   - Authors: Thomas M. Moerland, Joost Broekens, Catholijn M. Jonker  \n   - [PDF Link](https://arxiv.org/pdf/1705.05172v1)\n\n3. **[Explanatory Machine Learning for Sequential Human Teaching](http://arxiv.org/abs/2205.10250v2)**  \n   This paper examines the comprehensibility of machine-learned theories and how the ordering of concept presentations affects human understanding. It proposes a framework for sequential teaching that enhances comprehension.  \n   - Authors: Lun Ai, Johannes Langer, Stephen H. Muggleton, Ute Schmid  \n   - [PDF Link](https://arxiv.org/pdf/2205.10250v2)\n\n4. **[On-Device Machine Learning: An Algorithms and Learning Theory Perspective](http://arxiv.org/abs/1911.00623v2)**  \n   This survey discusses the challenges and future directions of on-device learning, reformulating it as resource-constrained learning. It covers various topics related to machine learning algorithms and their application on devices.  \n   - Authors: Sauptik Dhar, Junyao Guo, Jiayi Liu, Samarth Tripathi, Unmesh Kurup, Mohak Shah  \n   - [PDF Link](https://arxiv.org/pdf/1911.00623v2)\n\n5. **[Why Interpretability in Machine Learning? An Answer Using Distributed Detection and Data Fusion Theory](http://arxiv.org/abs/1806.09710v1)**  \n   This paper argues for the importance of interpretability in machine learning models, using the theory of distributed detection to characterize the performance of systems that combine human interpretation with machine learning outputs.  \n   - Authors: Kush R. Varshney, Prashant Khanduri, Pranay Sharma, Shan Zhang, Pramod K. Varshney  \n   - [PDF Link](https://arxiv.org/pdf/1806.09710v1)\n\n### General Resources on Machine Learning Theories\n\n1. **[The End of AI Frontiers – Machine Learning (Theory)](https://hunch.net?p=13764006)**  \n   A discussion on machine learning and learning theory research, exploring the boundaries of AI.\n\n2. **[Diving into Deep Learning - Theory and Applications with PyTorch](https://www.sib.swiss/training/course/20261203_DEEPP)**  \n   A course that covers the theoretical foundations and applications of deep learning in various fields.\n\n3. **[Machine Learning | Data Science, Algorithms & Automation | Britannica](https://www.britannica.com/technology/machine-learning)**  \n   An overview of machine learning, its applications, and the algorithms involved.\n\n4. **[Learning Theory - Recent articles and discoveries | Springer Nature Link](https://link.springer.com/subjects/learning-theory)**  \n   A collection of recent articles and discoveries in learning theory, covering various aspects of machine learning.\n\nThese resources should provide a solid foundation for understanding various theories in machine learning. If you need more specific information or additional topics, feel free to ask!",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "papers",
+              "args": {
+                "query": "machine learning theories",
+                "max_results": 5,
+                "sort_by": "relevance"
+              }
+            },
+            {
+              "name": "lookup",
+              "args": {
+                "query": "machine learning theories",
+                "topic": "general",
+                "max_results": 5
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "papers",
+              "args": {
+                "query": "machine learning theories",
+                "max_results": 5,
+                "sort_by": "relevance"
+              },
+              "result": {
+                "tool": "arxiv_search",
+                "query": "machine learning theories",
+                "api_query": "all:machine AND all:learning AND all:theories",
+                "total_results": 20305,
+                "items": [
+                  {
+                    "arxiv_id": "2404.12511v1",
+                    "title": "Generalizing Machine Learning Evaluation through the Integration of Shannon Entropy and Rough Set Theory",
+                    "summary": "This research paper delves into the innovative integration of Shannon entropy and rough set theory, presenting a novel approach to generalize the evaluation approach in machine learning. The conventional application of entropy, primarily focused on information uncertainty, is extended through its combination with rough set theory to offer a deeper insight into data's intrinsic structure and the interpretability of machine learning models. We introduce a comprehensive framework that synergizes the granularity of rough set theory with the uncertainty quantification of Shannon entropy, applied across a spectrum of machine learning algorithms. Our methodology is rigorously tested on various datasets, showcasing its capability to not only assess predictive performance but also to illuminate the underlying data complexity and model robustness. The results underscore the utility of this integrated approach in enhancing the evaluation landscape of machine learning, offering a multi-faceted perspective that balances accuracy with a profound understanding of data attributes and model dynamics. This paper contributes a groundbreaking perspective to machine learning evaluation, proposing a method that encapsulates a holistic view of model performance, thereby facilitating more informed decision-making in model selection and application.",
+                    "authors": [
+                      "Olga Cherednichenko",
+                      "Dmytro Chernyshov",
+                      "Dmytro Sytnikov",
+                      "Polina Sytnikova"
+                    ],
+                    "published": "2024-04-18T21:22:42Z",
+                    "updated": "2024-04-18T21:22:42Z",
+                    "url": "http://arxiv.org/abs/2404.12511v1",
+                    "pdf_url": "https://arxiv.org/pdf/2404.12511v1",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.LG",
+                    "categories": [
+                      "cs.LG"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "1705.05172v1",
+                    "title": "Emotion in Reinforcement Learning Agents and Robots: A Survey",
+                    "summary": "This article provides the first survey of computational models of emotion in reinforcement learning (RL) agents. The survey focuses on agent/robot emotions, and mostly ignores human user emotions. Emotions are recognized as functional in decision-making by influencing motivation and action selection. Therefore, computational emotion models are usually grounded in the agent's decision making architecture, of which RL is an important subclass. Studying emotions in RL-based agents is useful for three research fields. For machine learning (ML) researchers, emotion models may improve learning efficiency. For the interactive ML and human-robot interaction (HRI) community, emotions can communicate state and enhance user investment. Lastly, it allows affective modelling (AM) researchers to investigate their emotion theories in a successful AI agent class. This survey provides background on emotion theory and RL. It systematically addresses 1) from what underlying dimensions (e.g., homeostasis, appraisal) emotions can be derived and how these can be modelled in RL-agents, 2) what types of emotions have been derived from these dimensions, and 3) how these emotions may either influence the learning efficiency of the agent or be useful as social signals. We also systematically compare evaluation criteria, and draw connections to important RL sub-domains like (intrinsic) motivation and model-based RL. In short, this survey provides both a practical overview for engineers wanting to implement emotions in their RL agents, and identifies challenges and directions for future emotion-RL research.",
+                    "authors": [
+                      "Thomas M. Moerland",
+                      "Joost Broekens",
+                      "Catholijn M. Jonker"
+                    ],
+                    "published": "2017-05-15T11:49:56Z",
+                    "updated": "2017-05-15T11:49:56Z",
+                    "url": "http://arxiv.org/abs/1705.05172v1",
+                    "pdf_url": "https://arxiv.org/pdf/1705.05172v1",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.LG",
+                    "categories": [
+                      "cs.LG",
+                      "cs.AI",
+                      "cs.HC",
+                      "cs.RO",
+                      "stat.ML"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "2205.10250v2",
+                    "title": "Explanatory machine learning for sequential human teaching",
+                    "summary": "The topic of comprehensibility of machine-learned theories has recently drawn increasing attention. Inductive Logic Programming (ILP) uses logic programming to derive logic theories from small data based on abduction and induction techniques. Learned theories are represented in the form of rules as declarative descriptions of obtained knowledge. In earlier work, the authors provided the first evidence of a measurable increase in human comprehension based on machine-learned logic rules for simple classification tasks. In a later study, it was found that the presentation of machine-learned explanations to humans can produce both beneficial and harmful effects in the context of game learning. We continue our investigation of comprehensibility by examining the effects of the ordering of concept presentations on human comprehension. In this work, we examine the explanatory effects of curriculum order and the presence of machine-learned explanations for sequential problem-solving. We show that 1) there exist tasks A and B such that learning A before B has a better human comprehension with respect to learning B before A and 2) there exist tasks A and B such that the presence of explanations when learning A contributes to improved human comprehension when subsequently learning B. We propose a framework for the effects of sequential teaching on comprehension based on an existing definition of comprehensibility and provide evidence for support from data collected in human trials. Empirical results show that sequential teaching of concepts with increasing complexity a) has a beneficial effect on human comprehension and b) leads to human re-discovery of divide-and-conquer problem-solving strategies, and c) studying machine-learned explanations allows adaptations of human problem-solving strategy with better performance.",
+                    "authors": [
+                      "Lun Ai",
+                      "Johannes Langer",
+                      "Stephen H. Muggleton",
+                      "Ute Schmid"
+                    ],
+                    "published": "2022-05-20T15:23:46Z",
+                    "updated": "2023-03-26T02:30:14Z",
+                    "url": "http://arxiv.org/abs/2205.10250v2",
+                    "pdf_url": "https://arxiv.org/pdf/2205.10250v2",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.AI",
+                    "categories": [
+                      "cs.AI",
+                      "cs.LG"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "1911.00623v2",
+                    "title": "On-Device Machine Learning: An Algorithms and Learning Theory Perspective",
+                    "summary": "The predominant paradigm for using machine learning models on a device is to train a model in the cloud and perform inference using the trained model on the device. However, with increasing number of smart devices and improved hardware, there is interest in performing model training on the device. Given this surge in interest, a comprehensive survey of the field from a device-agnostic perspective sets the stage for both understanding the state-of-the-art and for identifying open challenges and future avenues of research. However, on-device learning is an expansive field with connections to a large number of related topics in AI and machine learning (including online learning, model adaptation, one/few-shot learning, etc.). Hence, covering such a large number of topics in a single survey is impractical. This survey finds a middle ground by reformulating the problem of on-device learning as resource constrained learning where the resources are compute and memory. This reformulation allows tools, techniques, and algorithms from a wide variety of research areas to be compared equitably. In addition to summarizing the state-of-the-art, the survey also identifies a number of challenges and next steps for both the algorithmic and theoretical aspects of on-device learning.",
+                    "authors": [
+                      "Sauptik Dhar",
+                      "Junyao Guo",
+                      "Jiayi Liu",
+                      "Samarth Tripathi",
+                      "Unmesh Kurup",
+                      "Mohak Shah"
+                    ],
+                    "published": "2019-11-02T01:16:02Z",
+                    "updated": "2020-07-24T07:04:34Z",
+                    "url": "http://arxiv.org/abs/1911.00623v2",
+                    "pdf_url": "https://arxiv.org/pdf/1911.00623v2",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.LG",
+                    "categories": [
+                      "cs.LG",
+                      "cs.DC",
+                      "stat.ML"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "1806.09710v1",
+                    "title": "Why Interpretability in Machine Learning? An Answer Using Distributed Detection and Data Fusion Theory",
+                    "summary": "As artificial intelligence is increasingly affecting all parts of society and life, there is growing recognition that human interpretability of machine learning models is important. It is often argued that accuracy or other similar generalization performance metrics must be sacrificed in order to gain interpretability. Such arguments, however, fail to acknowledge that the overall decision-making system is composed of two entities: the learned model and a human who fuses together model outputs with his or her own information. As such, the relevant performance criteria should be for the entire system, not just for the machine learning component. In this work, we characterize the performance of such two-node tandem data fusion systems using the theory of distributed detection. In doing so, we work in the population setting and model interpretable learned models as multi-level quantizers. We prove that under our abstraction, the overall system of a human with an interpretable classifier outperforms one with a black box classifier.",
+                    "authors": [
+                      "Kush R. Varshney",
+                      "Prashant Khanduri",
+                      "Pranay Sharma",
+                      "Shan Zhang",
+                      "Pramod K. Varshney"
+                    ],
+                    "published": "2018-06-25T21:37:21Z",
+                    "updated": "2018-06-25T21:37:21Z",
+                    "url": "http://arxiv.org/abs/1806.09710v1",
+                    "pdf_url": "https://arxiv.org/pdf/1806.09710v1",
+                    "source": "arxiv.org",
+                    "primary_category": "stat.ML",
+                    "categories": [
+                      "stat.ML",
+                      "cs.IT",
+                      "cs.LG"
+                    ]
+                  }
+                ],
+                "rate_limit_note": "arXiv may return 429 if called too frequently; this tool waits at least 3 seconds between requests in-process."
+              }
+            },
+            {
+              "tool": "lookup",
+              "args": {
+                "query": "machine learning theories",
+                "topic": "general",
+                "max_results": 5
+              },
+              "result": {
+                "tool": "web_search",
+                "query": "machine learning theories",
+                "topic": "general",
+                "timeframe": "week",
+                "items": [
+                  {
+                    "title": "The End of AI Frontiers – Machine Learning (Theory)",
+                    "url": "https://hunch.net?p=13764006",
+                    "source": "hunch.net",
+                    "summary": "public-within-MSR repos) trying to develop model building pipelines. [...] Skip to content\n\nMachine Learning (Theory)\n\nMachine learning and learning theory research\n\nPosted on  by John Langford\n\n# The End of AI Frontiers [...] that an idea was worth taking flight. Several other folks thought similarly and we organized to create the AI Frontiers sub-organization within MSR.",
+                    "score": 0.6852132
+                  },
+                  {
+                    "title": "Diving into Deep Learning - Theory and Applications with PyTorch | SIB Swiss Institute of Bioinformatics",
+                    "url": "https://www.sib.swiss/training/course/20261203_DEEPP",
+                    "source": "sib.swiss",
+                    "summary": "With the rise of new technologies, the volume of omics data in biology and medicine has grown exponentially recently. A major issue is to mine useful predictive knowledge from these data. Machine learning (ML) is a discipline in which computer algorithms perform automated learning by using data to assist humans in dealing with a large volume of multidimensional data, and deep learning is one of these methods. Deep learning is based on artificial neural networks inspired by the structure and [...] This course is part of the Machine Learning learning path. To get the most out of this course, you should meet the learning outcomes of the Introduction to Machine Learning with Python, the First Steps with Python in Life Sciences and the Introduction to Statistics and Data Visualisation with R.\n\n### Technical\n\nYou will need access to a computer with WI-FI enabled. The needed libraries are indicated in the dedicated page on the GitHub repo.\n\n## Application",
+                    "score": 0.6565047
+                  },
+                  {
+                    "title": "Machine learning | Data Science, Algorithms & Automation | Britannica",
+                    "url": "https://www.britannica.com/technology/machine-learning",
+                    "source": "britannica.com",
+                    "summary": "machine learning, in artificial intelligence (a subject within computer science), discipline concerned with the implementation of computer software that can learn autonomously. [...] External Websites\n\n Brookings Institution - What is machine learning?\n IOPscience - Journal of Physics: Conference Series - Machine Learning from Theory to Algorithms: An Overview\n IBM - What is Machine Learning?\n Mathematics LibreTexts - Machine learning [...] Expert systems and data mining programs are the most common applications for improving algorithms through the use of machine learning. Among the most common approaches are the use of artificial neural networks (weighted decision paths) and genetic algorithms (symbols “bred” and culled by algorithms to produce successively fitter programs).\n\nWilliam L. Hosch\n\nFeedback\n\nThank you for your feedback\n\nOur editors will review what you’ve submitted and determine whether to revise the article.",
+                    "score": 0.6353361
+                  },
+                  {
+                    "title": "Machine Learning (Theory) RSS feed (hunch.net) | Feeder – RSS Feed Reader",
+                    "url": "https://feeder.co/discover/5dfb6a68d3/hunch-net",
+                    "source": "feeder.co",
+                    "summary": "hunch.net\n\n# Machine Learning (Theory) RSS feed\n\nGet the latest updates from Machine Learning (Theory) directly as they happen.\n\n## About this feed\n\nMachine learning and learning theory research\n\n`\n\nCheck this feed in the RSS validator\n\nFind the RSS feed of another site\n\nShow a feed like this on your website\n\n### Latest posts\n\nLast updated about 2 months ago\n\n#### Curbing AI with Flight Recorders, Brainwash Entrapment Tests, and 3rd Party Evaluation\n\nabout 2 months ago [...] Machine Learning (Theory) posts less than once a week. The last post was about 2 months ago.\n\n### Is the Machine Learning (Theory) RSS feed working?\n\nYes. Feeder checked it about 1 hour ago and the feed answered normally.\n\n### How do I follow Machine Learning (Theory) in Feeder?\n\nClick Follow now, and sign up if you have no account yet. Feeder's free plan covers up to 200 feeds, on the web, iPhone and Android. No credit card required.\n\n## Follow Machine Learning (Theory) in Feeder [...] #### ICML 2021 Invited Speakers — ML for Science\n\nover 5 years ago\n\nBy: Stefanie Jegelka and Ameet Talwalkar (ICML21 Communication Chairs) With ICML 2021...\n\n## Get Machine Learning (Theory) where you read\n\n## Questions\n\n### What is the RSS feed URL for Machine Learning (Theory)?\n\nThe feed address is  Paste it into any RSS reader, or click Follow now to read it in Feeder.\n\n### How often does Machine Learning (Theory) post?",
+                    "score": 0.6257817
+                  },
+                  {
+                    "title": "Learning Theory - Recent articles and discoveries | Springer Nature Link",
+                    "url": "https://link.springer.com/subjects/learning-theory",
+                    "source": "link.springer.com",
+                    "summary": "Real-world learning scenarios often exhibit asymmetries between training and inference, where additional or higher-quality information is available only during training. The Learning Under Privileged Information (LUPI) paradigm provides a formal...\n\n## Related journals\n\nMachine Learning\n\nJournal\n\n### Machine Learning\n\nMachine Learningis an international forum for research on computational approaches to learning. The journal publishes articles reporting substantive...\n\nLearning & Behavior [...] Maritime disruption planning requires both forecasts of route conditions and decisions about how much adverse deviation to protect against. Improvements attributed to learned uncertainty can be confounded when competing policies also use different...\n\n### Causal machine learning reveals heterogeneous effects of loss versus gain framing on retirement savings [...] Journal\n\n### Learning & Behavior\n\nLearning & Behaviorpublishes experimental and theoretical contributions and critical reviews concerning fundamental processes of learning and...\n\nNeural Processing Letters\n\nJournal\n\n### Neural Processing Letters\n\nNeural Processing Letterspublishes rapid communications on theoretical and methodological advances in neural networks and machine learning. The...\n\n## Turn on email alerts\n\nGet notified when new research is published on this subject",
+                    "score": 0.62358373
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Here are some theories and concepts related to machine learning (ML):\n\n### Research Papers on Machine Learning Theories\n\n1. **[Generalizing Machine Learning Evaluation through the Integration of Shannon Entropy and Rough Set Theory](http://arxiv.org/abs/2404.12511v1)**  \n   This paper explores the integration of Shannon entropy and rough set theory to enhance the evaluation of machine learning models. It proposes a framework that combines the granularity of rough set theory with the uncertainty quantification of Shannon entropy, providing insights into data complexity and model robustness.  \n   - Authors: Olga Cherednichenko, Dmytro Chernyshov, Dmytro Sytnikov, Polina Sytnikova  \n   - [PDF Link](https://arxiv.org/pdf/2404.12511v1)\n\n2. **[Emotion in Reinforcement Learning Agents and Robots: A Survey](http://arxiv.org/abs/1705.05172v1)**  \n   This survey discusses computational models of emotion in reinforcement learning agents, focusing on how emotions influence decision-making and learning efficiency. It provides insights into the integration of emotion theory with reinforcement learning.  \n   - Authors: Thomas M. Moerland, Joost Broekens, Catholijn M. Jonker  \n   - [PDF Link](https://arxiv.org/pdf/1705.05172v1)\n\n3. **[Explanatory Machine Learning for Sequential Human Teaching](http://arxiv.org/abs/2205.10250v2)**  \n   This paper examines the comprehensibility of machine-learned theories and how the ordering of concept presentations affects human understanding. It proposes a framework for sequential teaching that enhances comprehension.  \n   - Authors: Lun Ai, Johannes Langer, Stephen H. Muggleton, Ute Schmid  \n   - [PDF Link](https://arxiv.org/pdf/2205.10250v2)\n\n4. **[On-Device Machine Learning: An Algorithms and Learning Theory Perspective](http://arxiv.org/abs/1911.00623v2)**  \n   This survey discusses the challenges and future directions of on-device learning, reformulating it as resource-constrained learning. It covers various topics related to machine learning algorithms and their application on devices.  \n   - Authors: Sauptik Dhar, Junyao Guo, Jiayi Liu, Samarth Tripathi, Unmesh Kurup, Mohak Shah  \n   - [PDF Link](https://arxiv.org/pdf/1911.00623v2)\n\n5. **[Why Interpretability in Machine Learning? An Answer Using Distributed Detection and Data Fusion Theory](http://arxiv.org/abs/1806.09710v1)**  \n   This paper argues for the importance of interpretability in machine learning models, using the theory of distributed detection to characterize the performance of systems that combine human interpretation with machine learning outputs.  \n   - Authors: Kush R. Varshney, Prashant Khanduri, Pranay Sharma, Shan Zhang, Pramod K. Varshney  \n   - [PDF Link](https://arxiv.org/pdf/1806.09710v1)\n\n### General Resources on Machine Learning Theories\n\n1. **[The End of AI Frontiers – Machine Learning (Theory)](https://hunch.net?p=13764006)**  \n   A discussion on machine learning and learning theory research, exploring the boundaries of AI.\n\n2. **[Diving into Deep Learning - Theory and Applications with PyTorch](https://www.sib.swiss/training/course/20261203_DEEPP)**  \n   A course that covers the theoretical foundations and applications of deep learning in various fields.\n\n3. **[Machine Learning | Data Science, Algorithms & Automation | Britannica](https://www.britannica.com/technology/machine-learning)**  \n   An overview of machine learning, its applications, and the algorithms involved.\n\n4. **[Learning Theory - Recent articles and discoveries | Springer Nature Link](https://link.springer.com/subjects/learning-theory)**  \n   A collection of recent articles and discoveries in learning theory, covering various aspects of machine learning.\n\nThese resources should provide a solid foundation for understanding various theories in machine learning. If you need more specific information or additional topics, feel free to ask!",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "papers",
+          "args": {
+            "query": "machine learning theories",
+            "max_results": 5,
+            "sort_by": "relevance"
+          },
+          "result": {
+            "tool": "arxiv_search",
+            "query": "machine learning theories",
+            "api_query": "all:machine AND all:learning AND all:theories",
+            "total_results": 20305,
+            "items": [
+              {
+                "arxiv_id": "2404.12511v1",
+                "title": "Generalizing Machine Learning Evaluation through the Integration of Shannon Entropy and Rough Set Theory",
+                "summary": "This research paper delves into the innovative integration of Shannon entropy and rough set theory, presenting a novel approach to generalize the evaluation approach in machine learning. The conventional application of entropy, primarily focused on information uncertainty, is extended through its combination with rough set theory to offer a deeper insight into data's intrinsic structure and the interpretability of machine learning models. We introduce a comprehensive framework that synergizes the granularity of rough set theory with the uncertainty quantification of Shannon entropy, applied across a spectrum of machine learning algorithms. Our methodology is rigorously tested on various datasets, showcasing its capability to not only assess predictive performance but also to illuminate the underlying data complexity and model robustness. The results underscore the utility of this integrated approach in enhancing the evaluation landscape of machine learning, offering a multi-faceted perspective that balances accuracy with a profound understanding of data attributes and model dynamics. This paper contributes a groundbreaking perspective to machine learning evaluation, proposing a method that encapsulates a holistic view of model performance, thereby facilitating more informed decision-making in model selection and application.",
+                "authors": [
+                  "Olga Cherednichenko",
+                  "Dmytro Chernyshov",
+                  "Dmytro Sytnikov",
+                  "Polina Sytnikova"
+                ],
+                "published": "2024-04-18T21:22:42Z",
+                "updated": "2024-04-18T21:22:42Z",
+                "url": "http://arxiv.org/abs/2404.12511v1",
+                "pdf_url": "https://arxiv.org/pdf/2404.12511v1",
+                "source": "arxiv.org",
+                "primary_category": "cs.LG",
+                "categories": [
+                  "cs.LG"
+                ]
+              },
+              {
+                "arxiv_id": "1705.05172v1",
+                "title": "Emotion in Reinforcement Learning Agents and Robots: A Survey",
+                "summary": "This article provides the first survey of computational models of emotion in reinforcement learning (RL) agents. The survey focuses on agent/robot emotions, and mostly ignores human user emotions. Emotions are recognized as functional in decision-making by influencing motivation and action selection. Therefore, computational emotion models are usually grounded in the agent's decision making architecture, of which RL is an important subclass. Studying emotions in RL-based agents is useful for three research fields. For machine learning (ML) researchers, emotion models may improve learning efficiency. For the interactive ML and human-robot interaction (HRI) community, emotions can communicate state and enhance user investment. Lastly, it allows affective modelling (AM) researchers to investigate their emotion theories in a successful AI agent class. This survey provides background on emotion theory and RL. It systematically addresses 1) from what underlying dimensions (e.g., homeostasis, appraisal) emotions can be derived and how these can be modelled in RL-agents, 2) what types of emotions have been derived from these dimensions, and 3) how these emotions may either influence the learning efficiency of the agent or be useful as social signals. We also systematically compare evaluation criteria, and draw connections to important RL sub-domains like (intrinsic) motivation and model-based RL. In short, this survey provides both a practical overview for engineers wanting to implement emotions in their RL agents, and identifies challenges and directions for future emotion-RL research.",
+                "authors": [
+                  "Thomas M. Moerland",
+                  "Joost Broekens",
+                  "Catholijn M. Jonker"
+                ],
+                "published": "2017-05-15T11:49:56Z",
+                "updated": "2017-05-15T11:49:56Z",
+                "url": "http://arxiv.org/abs/1705.05172v1",
+                "pdf_url": "https://arxiv.org/pdf/1705.05172v1",
+                "source": "arxiv.org",
+                "primary_category": "cs.LG",
+                "categories": [
+                  "cs.LG",
+                  "cs.AI",
+                  "cs.HC",
+                  "cs.RO",
+                  "stat.ML"
+                ]
+              },
+              {
+                "arxiv_id": "2205.10250v2",
+                "title": "Explanatory machine learning for sequential human teaching",
+                "summary": "The topic of comprehensibility of machine-learned theories has recently drawn increasing attention. Inductive Logic Programming (ILP) uses logic programming to derive logic theories from small data based on abduction and induction techniques. Learned theories are represented in the form of rules as declarative descriptions of obtained knowledge. In earlier work, the authors provided the first evidence of a measurable increase in human comprehension based on machine-learned logic rules for simple classification tasks. In a later study, it was found that the presentation of machine-learned explanations to humans can produce both beneficial and harmful effects in the context of game learning. We continue our investigation of comprehensibility by examining the effects of the ordering of concept presentations on human comprehension. In this work, we examine the explanatory effects of curriculum order and the presence of machine-learned explanations for sequential problem-solving. We show that 1) there exist tasks A and B such that learning A before B has a better human comprehension with respect to learning B before A and 2) there exist tasks A and B such that the presence of explanations when learning A contributes to improved human comprehension when subsequently learning B. We propose a framework for the effects of sequential teaching on comprehension based on an existing definition of comprehensibility and provide evidence for support from data collected in human trials. Empirical results show that sequential teaching of concepts with increasing complexity a) has a beneficial effect on human comprehension and b) leads to human re-discovery of divide-and-conquer problem-solving strategies, and c) studying machine-learned explanations allows adaptations of human problem-solving strategy with better performance.",
+                "authors": [
+                  "Lun Ai",
+                  "Johannes Langer",
+                  "Stephen H. Muggleton",
+                  "Ute Schmid"
+                ],
+                "published": "2022-05-20T15:23:46Z",
+                "updated": "2023-03-26T02:30:14Z",
+                "url": "http://arxiv.org/abs/2205.10250v2",
+                "pdf_url": "https://arxiv.org/pdf/2205.10250v2",
+                "source": "arxiv.org",
+                "primary_category": "cs.AI",
+                "categories": [
+                  "cs.AI",
+                  "cs.LG"
+                ]
+              },
+              {
+                "arxiv_id": "1911.00623v2",
+                "title": "On-Device Machine Learning: An Algorithms and Learning Theory Perspective",
+                "summary": "The predominant paradigm for using machine learning models on a device is to train a model in the cloud and perform inference using the trained model on the device. However, with increasing number of smart devices and improved hardware, there is interest in performing model training on the device. Given this surge in interest, a comprehensive survey of the field from a device-agnostic perspective sets the stage for both understanding the state-of-the-art and for identifying open challenges and future avenues of research. However, on-device learning is an expansive field with connections to a large number of related topics in AI and machine learning (including online learning, model adaptation, one/few-shot learning, etc.). Hence, covering such a large number of topics in a single survey is impractical. This survey finds a middle ground by reformulating the problem of on-device learning as resource constrained learning where the resources are compute and memory. This reformulation allows tools, techniques, and algorithms from a wide variety of research areas to be compared equitably. In addition to summarizing the state-of-the-art, the survey also identifies a number of challenges and next steps for both the algorithmic and theoretical aspects of on-device learning.",
+                "authors": [
+                  "Sauptik Dhar",
+                  "Junyao Guo",
+                  "Jiayi Liu",
+                  "Samarth Tripathi",
+                  "Unmesh Kurup",
+                  "Mohak Shah"
+                ],
+                "published": "2019-11-02T01:16:02Z",
+                "updated": "2020-07-24T07:04:34Z",
+                "url": "http://arxiv.org/abs/1911.00623v2",
+                "pdf_url": "https://arxiv.org/pdf/1911.00623v2",
+                "source": "arxiv.org",
+                "primary_category": "cs.LG",
+                "categories": [
+                  "cs.LG",
+                  "cs.DC",
+                  "stat.ML"
+                ]
+              },
+              {
+                "arxiv_id": "1806.09710v1",
+                "title": "Why Interpretability in Machine Learning? An Answer Using Distributed Detection and Data Fusion Theory",
+                "summary": "As artificial intelligence is increasingly affecting all parts of society and life, there is growing recognition that human interpretability of machine learning models is important. It is often argued that accuracy or other similar generalization performance metrics must be sacrificed in order to gain interpretability. Such arguments, however, fail to acknowledge that the overall decision-making system is composed of two entities: the learned model and a human who fuses together model outputs with his or her own information. As such, the relevant performance criteria should be for the entire system, not just for the machine learning component. In this work, we characterize the performance of such two-node tandem data fusion systems using the theory of distributed detection. In doing so, we work in the population setting and model interpretable learned models as multi-level quantizers. We prove that under our abstraction, the overall system of a human with an interpretable classifier outperforms one with a black box classifier.",
+                "authors": [
+                  "Kush R. Varshney",
+                  "Prashant Khanduri",
+                  "Pranay Sharma",
+                  "Shan Zhang",
+                  "Pramod K. Varshney"
+                ],
+                "published": "2018-06-25T21:37:21Z",
+                "updated": "2018-06-25T21:37:21Z",
+                "url": "http://arxiv.org/abs/1806.09710v1",
+                "pdf_url": "https://arxiv.org/pdf/1806.09710v1",
+                "source": "arxiv.org",
+                "primary_category": "stat.ML",
+                "categories": [
+                  "stat.ML",
+                  "cs.IT",
+                  "cs.LG"
+                ]
+              }
+            ],
+            "rate_limit_note": "arXiv may return 429 if called too frequently; this tool waits at least 3 seconds between requests in-process."
+          }
+        },
+        {
+          "tool": "lookup",
+          "args": {
+            "query": "machine learning theories",
+            "topic": "general",
+            "max_results": 5
+          },
+          "result": {
+            "tool": "web_search",
+            "query": "machine learning theories",
+            "topic": "general",
+            "timeframe": "week",
+            "items": [
+              {
+                "title": "The End of AI Frontiers – Machine Learning (Theory)",
+                "url": "https://hunch.net?p=13764006",
+                "source": "hunch.net",
+                "summary": "public-within-MSR repos) trying to develop model building pipelines. [...] Skip to content\n\nMachine Learning (Theory)\n\nMachine learning and learning theory research\n\nPosted on  by John Langford\n\n# The End of AI Frontiers [...] that an idea was worth taking flight. Several other folks thought similarly and we organized to create the AI Frontiers sub-organization within MSR.",
+                "score": 0.6852132
+              },
+              {
+                "title": "Diving into Deep Learning - Theory and Applications with PyTorch | SIB Swiss Institute of Bioinformatics",
+                "url": "https://www.sib.swiss/training/course/20261203_DEEPP",
+                "source": "sib.swiss",
+                "summary": "With the rise of new technologies, the volume of omics data in biology and medicine has grown exponentially recently. A major issue is to mine useful predictive knowledge from these data. Machine learning (ML) is a discipline in which computer algorithms perform automated learning by using data to assist humans in dealing with a large volume of multidimensional data, and deep learning is one of these methods. Deep learning is based on artificial neural networks inspired by the structure and [...] This course is part of the Machine Learning learning path. To get the most out of this course, you should meet the learning outcomes of the Introduction to Machine Learning with Python, the First Steps with Python in Life Sciences and the Introduction to Statistics and Data Visualisation with R.\n\n### Technical\n\nYou will need access to a computer with WI-FI enabled. The needed libraries are indicated in the dedicated page on the GitHub repo.\n\n## Application",
+                "score": 0.6565047
+              },
+              {
+                "title": "Machine learning | Data Science, Algorithms & Automation | Britannica",
+                "url": "https://www.britannica.com/technology/machine-learning",
+                "source": "britannica.com",
+                "summary": "machine learning, in artificial intelligence (a subject within computer science), discipline concerned with the implementation of computer software that can learn autonomously. [...] External Websites\n\n Brookings Institution - What is machine learning?\n IOPscience - Journal of Physics: Conference Series - Machine Learning from Theory to Algorithms: An Overview\n IBM - What is Machine Learning?\n Mathematics LibreTexts - Machine learning [...] Expert systems and data mining programs are the most common applications for improving algorithms through the use of machine learning. Among the most common approaches are the use of artificial neural networks (weighted decision paths) and genetic algorithms (symbols “bred” and culled by algorithms to produce successively fitter programs).\n\nWilliam L. Hosch\n\nFeedback\n\nThank you for your feedback\n\nOur editors will review what you’ve submitted and determine whether to revise the article.",
+                "score": 0.6353361
+              },
+              {
+                "title": "Machine Learning (Theory) RSS feed (hunch.net) | Feeder – RSS Feed Reader",
+                "url": "https://feeder.co/discover/5dfb6a68d3/hunch-net",
+                "source": "feeder.co",
+                "summary": "hunch.net\n\n# Machine Learning (Theory) RSS feed\n\nGet the latest updates from Machine Learning (Theory) directly as they happen.\n\n## About this feed\n\nMachine learning and learning theory research\n\n`\n\nCheck this feed in the RSS validator\n\nFind the RSS feed of another site\n\nShow a feed like this on your website\n\n### Latest posts\n\nLast updated about 2 months ago\n\n#### Curbing AI with Flight Recorders, Brainwash Entrapment Tests, and 3rd Party Evaluation\n\nabout 2 months ago [...] Machine Learning (Theory) posts less than once a week. The last post was about 2 months ago.\n\n### Is the Machine Learning (Theory) RSS feed working?\n\nYes. Feeder checked it about 1 hour ago and the feed answered normally.\n\n### How do I follow Machine Learning (Theory) in Feeder?\n\nClick Follow now, and sign up if you have no account yet. Feeder's free plan covers up to 200 feeds, on the web, iPhone and Android. No credit card required.\n\n## Follow Machine Learning (Theory) in Feeder [...] #### ICML 2021 Invited Speakers — ML for Science\n\nover 5 years ago\n\nBy: Stefanie Jegelka and Ameet Talwalkar (ICML21 Communication Chairs) With ICML 2021...\n\n## Get Machine Learning (Theory) where you read\n\n## Questions\n\n### What is the RSS feed URL for Machine Learning (Theory)?\n\nThe feed address is  Paste it into any RSS reader, or click Follow now to read it in Feeder.\n\n### How often does Machine Learning (Theory) post?",
+                "score": 0.6257817
+              },
+              {
+                "title": "Learning Theory - Recent articles and discoveries | Springer Nature Link",
+                "url": "https://link.springer.com/subjects/learning-theory",
+                "source": "link.springer.com",
+                "summary": "Real-world learning scenarios often exhibit asymmetries between training and inference, where additional or higher-quality information is available only during training. The Learning Under Privileged Information (LUPI) paradigm provides a formal...\n\n## Related journals\n\nMachine Learning\n\nJournal\n\n### Machine Learning\n\nMachine Learningis an international forum for research on computational approaches to learning. The journal publishes articles reporting substantive...\n\nLearning & Behavior [...] Maritime disruption planning requires both forecasts of route conditions and decisions about how much adverse deviation to protect against. Improvements attributed to learned uncertainty can be confounded when competing policies also use different...\n\n### Causal machine learning reveals heterogeneous effects of loss versus gain framing on retirement savings [...] Journal\n\n### Learning & Behavior\n\nLearning & Behaviorpublishes experimental and theoretical contributions and critical reviews concerning fundamental processes of learning and...\n\nNeural Processing Letters\n\nJournal\n\n### Neural Processing Letters\n\nNeural Processing Letterspublishes rapid communications on theoretical and methodological advances in neural networks and machine learning. The...\n\n## Turn on email alerts\n\nGet notified when new research is published on this subject",
+                "score": 0.62358373
+              }
+            ]
+          }
+        }
+      ],
+      "ended_at": "2026-11-10T11:43:02"
+    }
+  ]
+}

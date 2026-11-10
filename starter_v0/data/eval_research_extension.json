@@ -1,5 +1,5 @@
 {
-  "dataset_id": "day04_v2_research_extension",
+  "dataset_id": "day03_v2_research_extension",
   "dataset_role": "extension",
   "description": "Optional extension eval for Research Agent: company policy search + arXiv tools. Base eval remains data/eval_base.json.",
   "cases": [

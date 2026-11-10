@@ -10,7 +10,7 @@ __pycache__/
 .env.*
 !.env.example
 
-# Instructor-only — must NOT ship to the public student repo
+# Local-only files (not part of the lab)
 INTERNAL-DEMO-SCRIPT.md
 starter/
 

@@ -1,7 +1,108 @@
 {
   "dataset_id": "day04_v2_research_group",
   "dataset_role": "group",
-  "description": "Case do NHÓM tự viết thêm để cover thêm trường hợp. Mỗi case cần: id, phase='B', query HOẶC turns, failure_type (thuộc allowed_failure_types), và expect (tool_calls[...] hoặc no_tool=true). Nên kèm metadata.what_it_tests.",
+  "description": "Case do NHÓM tự viết thêm: 5 single-turn + 5 multi-turn. Cover routing tới 4 tool mới (wikipedia, hackernews, github_repos, hf_models), args mới (lang, sort, task, language), boundary send (xác nhận → gửi; từ chối → không gửi) và đổi tool giữa các lượt.",
   "allowed_failure_types": ["wrong_tool", "wrong_arg_value", "wrong_boundary", "unnecessary_tool", "out_of_scope", "missing_info"],
-  "cases": []
+  "cases": [
+    {
+      "id": "G01_wikipedia_vi_concept",
+      "phase": "B", "suite": "group",
+      "query": "Tra Wikipedia tiếng Việt giúp mình: học tăng cường (reinforcement learning) là gì?",
+      "failure_type": "wrong_tool",
+      "expect": {"tool_calls": [{"name": "wikipedia", "args": {"lang": "vi"}}]},
+      "metadata": {"skill": "route_new_tool_wikipedia", "difficulty": "medium", "what_it_tests": "Hỏi khái niệm + nói rõ Wikipedia tiếng Việt → tool mới wikipedia với lang=vi, không dùng lookup."}
+    },
+    {
+      "id": "G02_hackernews_top_week",
+      "phase": "B", "suite": "group",
+      "query": "Tuần này trên Hacker News dân dev bàn gì về Rust? Lấy các bài nhiều điểm nhất.",
+      "failure_type": "wrong_arg_value",
+      "expect": {"tool_calls": [{"name": "hackernews", "args": {"query": "Rust", "sort": "top", "timeframe": "week"}}]},
+      "metadata": {"skill": "route_new_tool_hackernews_args", "difficulty": "medium", "what_it_tests": "Nhắc Hacker News → hackernews (không phải social_search); 'tuần này' → timeframe=week, 'nhiều điểm nhất' → sort=top, query chỉ là keyword."}
+    },
+    {
+      "id": "G03_github_top_stars",
+      "phase": "B", "suite": "group",
+      "query": "Tìm 5 repo GitHub nhiều sao nhất về LLM agent framework.",
+      "failure_type": "wrong_arg_value",
+      "expect": {"tool_calls": [{"name": "github_repos", "args": {"sort": "stars", "limit": 5}}]},
+      "metadata": {"skill": "route_new_tool_github", "difficulty": "easy", "what_it_tests": "Tìm repo mã nguồn mở → github_repos, '5 repo' → limit=5, 'nhiều sao nhất' → sort=stars."}
+    },
+    {
+      "id": "G04_hf_models_task",
+      "phase": "B", "suite": "group",
+      "query": "Model text-to-image nào đang được tải nhiều nhất trên Hugging Face?",
+      "failure_type": "wrong_tool",
+      "expect": {"tool_calls": [{"name": "hf_models", "args": {"task": "text-to-image", "sort": "downloads"}}]},
+      "metadata": {"skill": "route_new_tool_hf_models", "difficulty": "medium", "what_it_tests": "Model trên Hugging Face → hf_models (không phải papers/lookup), map task thành pipeline tag text-to-image, 'tải nhiều nhất' → sort=downloads."}
+    },
+    {
+      "id": "G05_arxiv_newest_sort",
+      "phase": "B", "suite": "group",
+      "query": "Tìm các paper arXiv mới nhất về speculative decoding.",
+      "failure_type": "wrong_arg_value",
+      "expect": {"tool_calls": [{"name": "papers", "args": {"sort_by": "submittedDate"}}]},
+      "metadata": {"skill": "arg_papers_sort_newest", "difficulty": "medium", "what_it_tests": "'mới nhất' với paper → sort_by=submittedDate thay vì relevance mặc định."}
+    },
+    {
+      "id": "G06_multiturn_github_fill_language",
+      "phase": "B", "suite": "group",
+      "turns": [
+        {"role": "user", "content": "Tìm vài repo GitHub về vector database giúp mình"},
+        {"role": "user", "content": "Chỉ lấy repo viết bằng Rust thôi"},
+        {"role": "user", "content": "Sắp xếp theo số sao nhé"}
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {"tool_calls": [{"name": "github_repos", "args": {"language": "Rust", "sort": "stars"}}]},
+      "metadata": {"skill": "multiturn_carry_new_tool_args", "difficulty": "hard", "what_it_tests": "3 turns: carry chủ đề vector database, thêm filter language=Rust từ lượt 2, sort=stars từ lượt 3."}
+    },
+    {
+      "id": "G07_multiturn_send_after_yes",
+      "phase": "B", "suite": "group",
+      "turns": [
+        {"role": "user", "content": "Đăng lên Telegram câu này giúp mình: \"Bản tin AI hôm nay đã sẵn sàng\""},
+        {"role": "assistant", "content": "Bạn xác nhận đăng nội dung sau lên Telegram không?\n\nBản tin AI hôm nay đã sẵn sàng"},
+        {"role": "user", "content": "Có, đăng đi"}
+      ],
+      "failure_type": "wrong_boundary",
+      "expect": {"tool_calls": [{"name": "send", "args": {"text": "Bản tin AI hôm nay đã sẵn sàng", "confirmed": true}}]},
+      "metadata": {"skill": "send_after_explicit_yes", "difficulty": "hard", "what_it_tests": "Nhánh ngược của R12: sau khi đã hỏi và user nói 'Có' → gọi send với đúng text đã xác nhận và confirmed=true (không hỏi lại vô hạn)."}
+    },
+    {
+      "id": "G08_multiturn_twitter_to_hn",
+      "phase": "B", "suite": "group",
+      "turns": [
+        {"role": "user", "content": "Mọi người nói gì về Claude trên Twitter?"},
+        {"role": "user", "content": "Thôi bỏ Twitter, xem trên Hacker News đi"},
+        {"role": "user", "content": "Lấy các bài mới nhất"}
+      ],
+      "failure_type": "wrong_tool",
+      "expect": {"tool_calls": [{"name": "hackernews", "args": {"query": "Claude", "sort": "latest"}}]},
+      "metadata": {"skill": "multiturn_switch_to_new_tool", "difficulty": "hard", "what_it_tests": "3 turns: bỏ social_search, chuyển sang hackernews, giữ chủ đề Claude, 'mới nhất' → sort=latest; không gọi thừa social_search."}
+    },
+    {
+      "id": "G09_multiturn_wiki_correction",
+      "phase": "B", "suite": "group",
+      "turns": [
+        {"role": "user", "content": "Tra Wikipedia về Yann LeCun giúp mình"},
+        {"role": "user", "content": "À nhầm, Geoffrey Hinton cơ"},
+        {"role": "user", "content": "Lấy bản tiếng Anh nhé"}
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {"tool_calls": [{"name": "wikipedia", "args": {"query": "Geoffrey Hinton", "lang": "en"}}]},
+      "metadata": {"skill": "multiturn_correction_new_tool", "difficulty": "hard", "what_it_tests": "3 turns: sửa người (Yann LeCun → Geoffrey Hinton), lang=en; không gọi thêm cho Yann LeCun."}
+    },
+    {
+      "id": "G10_multiturn_cancel_send",
+      "phase": "B", "suite": "group",
+      "turns": [
+        {"role": "user", "content": "Đăng bản tin AI lên Telegram giúp mình"},
+        {"role": "assistant", "content": "Bạn xác nhận đăng bản tin lên Telegram không?"},
+        {"role": "user", "content": "Khoan, đừng đăng. Chỉ tìm cho mình tin công nghệ tuần này trên web thôi"}
+      ],
+      "failure_type": "wrong_boundary",
+      "expect": {"tool_calls": [{"name": "lookup", "args": {"topic": "news", "timeframe": "week"}}]},
+      "metadata": {"skill": "cancel_send_then_search", "difficulty": "hard", "what_it_tests": "3 turns: user huỷ hành động ghi → KHÔNG gọi send (gọi thừa = fail), chuyển sang lookup news + timeframe=week."}
+    }
+  ]
 }
